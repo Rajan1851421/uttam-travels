@@ -13,11 +13,9 @@ function Footer() {
                     <div className="container px-4 mx-auto">
                         <div className="-mx-4 flex flex-wrap justify-between">
                             <div className="px-4 my-4 w-full xl:w-1/5">
-                                <svg version="1.1" viewBox="0 0 3368 512" xmlns="http://www.w3.org/2000/svg">
-                                    <text fill="white" fontFamily="Nunito-Bold, Nunito" fontSize="512" fontWeight="bold">
-                                        <tspan x="654" y="518" className="text-center">UT Travels</tspan>
-                                    </text>
-                                </svg>
+                            <div>
+                                    <h2 className="flex justify-start items-center text-2xl pb-4 mb-4 border-b-4 border-blue-600"> <MdLabelImportant className="text-red-700" />UT Travels</h2>
+                                </div>
 
                                 <p className="text-center ">
                                     Thank you for choosing Uttam Travels How can I assist you today? Whether you need help with booking, travel arrangements, or have any questions about your journey, feel free to ask. Your comfort and satisfaction are our top priorities.
