@@ -1,47 +1,43 @@
+import { Link } from "react-router-dom"
+import { FaLocationDot } from "react-icons/fa6";
+import { TiExportOutline } from "react-icons/ti";
+import { MdLabelImportant } from "react-icons/md";
+
+
 
 function Footer() {
     return (
         <>
             <footer>
-                <div className="bg-gray-800 py-4 text-gray-400">
+                <div className="bg-gray-800 pt-4 text-gray-400">
                     <div className="container px-4 mx-auto">
                         <div className="-mx-4 flex flex-wrap justify-between">
                             <div className="px-4 my-4 w-full xl:w-1/5">
                                 <svg version="1.1" viewBox="0 0 3368 512" xmlns="http://www.w3.org/2000/svg">
-                                    <g fill="none" fillRule="evenodd">
-                                        <g transform="translate(0 -75)">
-                                            <g transform="translate(0 75)">
-                                                <rect width="512" height="512" rx="128" fill="#3D5AFE"></rect>
-                                                <rect x="149" y="176" width="220" height="220" fill="#fff"></rect>
-                                                <circle cx="259" cy="156" r="40" fill="#fff"></circle>
-                                                <circle cx="369" cy="286" r="40" fill="#2962FF"></circle>
-                                            </g>
-                                            <text fill="white" fontFamily="Nunito-Bold, Nunito" fontSize="512" fontWeight="bold">
-                                                <tspan x="654" y="518">Tailwindow</tspan>
-                                            </text>
-                                        </g>
-                                    </g>
+                                    <text fill="white" fontFamily="Nunito-Bold, Nunito" fontSize="512" fontWeight="bold">
+                                        <tspan x="654" y="518" className="text-center">UT Travels</tspan>
+                                    </text>
                                 </svg>
 
-                                <p className="text-justify">
-                                    Tailwindow is a collection of UI Components created using Tailwind CSS Framework. The UI Components gives you all of the building blocks you need to build any designs without any annoying opinionated styles you have to fight to override.
+                                <p className="text-center ">
+                                    Thank you for choosing Uttam Travels How can I assist you today? Whether you need help with booking, travel arrangements, or have any questions about your journey, feel free to ask. Your comfort and satisfaction are our top priorities.
                                 </p>
                             </div>
 
                             <div className="px-4 my-4 w-full sm:w-auto">
                                 <div>
-                                    <h2 className="inline-block text-2xl pb-4 mb-4 border-b-4 border-blue-600">Company</h2>
+                                    <h2 className="flex justify-start items-center text-2xl pb-4 mb-4 border-b-4 border-blue-600"> <MdLabelImportant className="text-red-700" />Important</h2>
                                 </div>
                                 <ul className="leading-8">
-                                    <li><a href="#" className="hover:text-blue-400">About Us</a></li>
-                                    <li><a href="#" className="hover:text-blue-400">Terms &amp; Conditions</a></li>
-                                    <li><a href="#" className="hover:text-blue-400">Privacy Policy</a></li>
-                                    <li><a href="#" className="hover:text-blue-400">Contact Us</a></li>
+                                    <li><Link to="/login" className="hover:text-blue-400">Login</Link></li>
+                                    <li><Link to="" className="hover:text-blue-400">Terms &amp; Conditions</Link></li>
+                                    <li><Link to="" className="hover:text-blue-400">Privacy Policy</Link></li>
+                                    <li><Link to="" className="hover:text-blue-400">Contact Us</Link></li>
                                 </ul>
                             </div>
                             <div className="px-4 my-4 w-full sm:w-auto">
                                 <div>
-                                    <h2 className="inline-block text-2xl pb-4 mb-4 border-b-4 border-blue-600">Blog</h2>
+                                    <h2 className="pb-4 text-2xl  mb-4 border-b-4 flex justify-start items-center border-blue-600"> <FaLocationDot className="text-yellow-700" /> Address</h2>
                                 </div>
                                 <ul className="leading-8">
                                     <li><a href="#" className="hover:text-blue-400">Getting Started With HTML and CSS</a></li>
@@ -53,7 +49,7 @@ function Footer() {
                             </div>
                             <div className="px-4 my-4 w-full sm:w-auto xl:w-1/5">
                                 <div>
-                                    <h2 className="inline-block text-2xl pb-4 mb-4 border-b-4 border-blue-600">Connect With Us</h2>
+                                    <h2 className="flex justify-start items-center text-2xl pb-4 mb-4 border-b-4 border-blue-600"> <TiExportOutline className="text-[#84CC16]" />Connect With Us</h2>
                                 </div>
                                 <a href="#" className="inline-flex items-center justify-center h-8 w-8 border border-gray-100 rounded-full mr-1 hover:text-blue-400 hover:border-blue-400">
                                     <svg className="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
@@ -88,13 +84,11 @@ function Footer() {
                     <div className="container mx-auto px-4">
                         <div className="-mx-4 flex flex-wrap justify-between">
                             <div className="px-4 w-full text-center sm:w-auto sm:text-left">
-                                Copyright © 2020
-                                {new Date().getFullYear() === 2020 && ` - ${new Date().getFullYear()}`} - 2022
-                                Tailwindow. All Rights Reserved.
+                                Copyright © 2020 All Rights Reserved.
                             </div>
 
                             <div className="px-4 w-full text-center sm:w-auto sm:text-left">
-                                Made with ❤️ by Tailwindow.
+                                Made with : Rajan Prajapati
                             </div>
                         </div>
                     </div>
