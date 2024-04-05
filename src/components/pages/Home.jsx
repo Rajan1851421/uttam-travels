@@ -16,7 +16,16 @@ function Home() {
             </div>
 
             <div className='mx-14 my-4'>
-                <Card/>
+                <Card />
+
+            </div>
+            <div className='flex justify-evenly items-center mx-24 gap-4'>
+                <div>
+                    <img className='h-[300px] w-[400px] ' src="https://img.freepik.com/free-photo/view-3d-car_23-2150796896.jpg?size=626&ext=jpg&ga=GA1.1.108132751.1702923772&semt=ais" alt="" />
+                </div>
+                <div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At quibusdam molestiae tempora praesentium repellat architecto esse expedita eligendi ullam veniam possimus odio laboriosam eum a nisi, ab aliquam quam corrupti harum facere dicta earum saepe sapiente optio. Recusandae in maxime incidunt aperiam doloremque, ratione commodi dolorum nihil dolor maiores voluptatem repudiandae asperiores dicta vero iusto sunt eum! Culpa molestiae velit modi, ut eius corporis deleniti odio aspernatur, suscipit placeat perspiciatis? Consectetur eum, nesciunt dolor maiores placeat corrupti, delectus officiis facere rem itaque optio nihil aspernatur sint earum ut. Architecto hic qui quaerat ratione pariatur eos rerum perferendis asperiores similique aspernatur?</p>
+                </div>
 
             </div>
 
