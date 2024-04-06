@@ -62,7 +62,7 @@ window.scrollTo(0,0)
   return (
     <div className="bg-white bg-opacity-20 min-h-[100vh] flex items-center">
       <div className="container mx-auto">
-        <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-4 gap-4 py-10 text-left mx-1 md:mx-5 xl:mx-10">
+        <div className="grid grid-cols-1 w-full  md:grid-cols-2 lg:grid-cols-4 gap-4 py-10 text-left mx-1 md:mx-5 xl:mx-10">
           {apiData.map((data, index) => (
             <div className="border rounded-lg hover:drop-shadow-md overflow-hidden relative bg-white" key={index}>
               <div className="cursor-pointer h-48 overflow-hidden">
