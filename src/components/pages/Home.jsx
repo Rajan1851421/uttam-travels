@@ -497,29 +497,7 @@ function Home() {
             </div>
 
 
-            <div className='mx-1 md:mx-14 mt-4 md:mt-10 relative overflow-x-auto w-full'>
-                <div className="overflow-x-auto">
-                    <table className="table w-full border border-[#D6D3D1] mx-auto">
-
-                        <tbody>
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        </tbody>
-                    </table>
-
-                </div >
-            </div >
+            
 
 
 
