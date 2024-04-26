@@ -2,11 +2,12 @@
 function Service() {
   return (
     <div className=''>
-      <div className=" ">
-        <img className="h-[500px] w-full" src="https://chikucab.com/images/home/slidebg.webp" alt="" />
+      <div className="max-w-full">
+        <img className=" h-[200px] md:h-[500px] w-full" src="https://chikucab.com/images/home/slidebg.webp" alt="" />
       </div>
+
       <div className=" ">
-        <div className="p-8 roumded-lg shadow-lg bg-[#FEF9C3] m-10  ">
+        <div className="p-8 roumded-lg shadow-lg bg-[#FEF9C3] m-1 md:m-10  ">
           <div className="mx-auto ">
             <h1 className="font-bold text-lg md:text-3xl uppercase text-[#78716C] ">Jackpot Deals on Top Selling Packages</h1>
             <p className="text-[#A8A29E] text-md ">Save extra with our exclusive deals!</p>
