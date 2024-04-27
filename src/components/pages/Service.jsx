@@ -1,5 +1,10 @@
 
 function Service() {
+
+  window.scrollTo(0, 0);
+
+
+
   return (
     <div className=''>
       <div className="max-w-full">
@@ -51,6 +56,62 @@ function Service() {
                 <img className="rounded-md shadow-md block w-full" loading="lazy" src="https://hldak.mmtcdn.com/prod-s3-hld-hpcmsadmin/holidays/images/cities/3736/Yen-stream-in-Autumn.jpg?crop=134:207&downsize=134:207" alt="" />
                 <div className="absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-gray-800 to-transparent mx-auto text-center text-white font-semibold">
                   Vietanam 6N 65000/-
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      {/* international destinations */}
+
+      <div className=" ">
+        <div className="p-8 roumded-lg shadow-lg bg-[#FEF9C3] m-1 md:m-10  ">
+          <div className="mx-auto ">
+            <h1 className="font-bold text-lg md:text-3xl uppercase text-[#78716C] ">International Destinations!</h1>
+            <p className="text-[#A8A29E] text-md ">Save extra with our exclusive deals!</p>
+            <div className="grid grid-cols-2 md:grid-cols-7 mt-4  gap-2">
+              <div className="relative">
+                <img className="rounded-md shadow-md block w-full" loading="lazy" src="https://hldak.mmtcdn.com/prod-s3-hld-hpcmsadmin/holidays/images/cities/3198/shutterstock_176887880.jpg?crop=156:227&downsize=156:227" alt="" />
+                <div className="absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t
+                 from-gray-950 to-transparent mx-auto text-center text-white font-semibold">Europe</div>
+              </div>
+
+              <div className="relative">
+                <img className="rounded-md shadow-md block w-full" loading="lazy" src="https://hldak.mmtcdn.com/prod-s3-hld-hpcmsadmin/holidays/images/cities/3067/I.jpg?crop=156:227&downsize=156:227" alt="" />
+                <div className="absolute inset-x-0 bottom-0 h-8
+                 bg-gradient-to-t from-gray-800 to-transparent mx-auto text-center text-white font-semibold">Thiland</div>
+              </div>
+              <div className="relative">
+                <img className="rounded-md shadow-md block w-full" loading="lazy" src="https://hldak.mmtcdn.com/prod-s3-hld-hpcmsadmin/holidays/images/cities/1971/PetronasTwinTowersAndKLCCPark.jpg?crop=156:227&downsize=156:227" alt="" />
+                <div className="absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-gray-800 to-transparent mx-auto text-center text-white font-semibold">
+                  Malesia
+                </div>
+              </div>
+              <div className="relative">
+                <img className="rounded-md shadow-md block w-full" loading="lazy" src="https://hldak.mmtcdn.com/prod-s3-hld-hpcmsadmin/holidays/images/cities/4916/kuta.jpg?crop=156:227&downsize=156:227" alt="" />
+                <div className="absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-gray-800 to-transparent mx-auto text-center text-white font-semibold">
+                  Bali
+                </div>
+              </div>
+              <div className="relative">
+                <img className="rounded-md shadow-md block w-full" loading="lazy" src="https://hldak.mmtcdn.com/prod-s3-hld-hpcmsadmin/holidays/images/cities/3147/majestic-mauritus-and-dubai.jpg?crop=156:227&downsize=156:227" alt="" />
+                <div className="absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-gray-800 to-transparent mx-auto text-center text-white font-semibold">
+                  Dubai
+                </div>
+              </div>
+              <div className="relative">
+                <img className="rounded-md shadow-md block w-full" loading="lazy" src="https://hldak.mmtcdn.com/prod-s3-hld-hpcmsadmin/holidays/images/cities/2514/singapore1.jpg?crop=156:227&downsize=156:227" alt="" />
+                <div className="absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-gray-800 to-transparent mx-auto text-center text-white font-semibold">
+                  Singspoor
+                </div>
+              </div>
+              <div className="relative">
+                <img className="rounded-md shadow-md block w-full" loading="lazy" src="https://hldak.mmtcdn.com/prod-s3-hld-hpcmsadmin/holidays/images/cities/61/Opera-Bar.jpg?crop=370:240?crop=156:227&downsize=156:227" alt="" />
+                <div className="absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-gray-800 to-transparent mx-auto text-center text-white font-semibold">
+                  Australia
                 </div>
               </div>
 
