@@ -1,14 +1,21 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearTokenLogin } from '../features/producrSlice';
+
 
 function Navbar() {
-
+  const dispatch = useDispatch()
+  const { Token_login } = useSelector((state) => state.productStore)
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
+  const handleLogout = () => {
+    dispatch(clearTokenLogin())
+  }
   const closeMenu = () => {
     setIsOpen(false);
   };
@@ -18,7 +25,7 @@ function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <img className='h-10 rounded-full' src="https://img.freepik.com/free-vector/simple-character-tourist-girl_1308-101548.jpg?size=626&ext=jpg&ga=GA1.1.108132751.1702923772&semt=ais" alt="" />
-        
+
 
           {/* Mobile menu button */}
           <div className="flex md:hidden">
@@ -36,6 +43,13 @@ function Navbar() {
               <Link to="/service" onClick={closeMenu} className="text-white hover:bg-gray-700 px-3 py-2 rounded-md">Services</Link>
               <Link to="/contact" onClick={closeMenu} className="text-white hover:bg-gray-700 px-3 py-2 rounded-md">Contact</Link>
               <Link to="/login" onClick={closeMenu} className="text-white hover:bg-gray-700 px-3 py-2 rounded-md">Login</Link>
+              {
+                Token_login ?
+                  (<button onClick={handleLogout} className='bg-[#B91C1C] px-2  text-white'>Logout</button>) :
+                  null
+              }
+
+
             </div>
           </div>
         </div>
@@ -49,6 +63,11 @@ function Navbar() {
             <Link to="/service" onClick={closeMenu} className="text-white block px-3 py-2 rounded-md">Services</Link>
             <Link to="/contact" onClick={closeMenu} className="text-white block px-3 py-2 rounded-md">Contact</Link>
             <Link to="/login" onClick={closeMenu} className="text-white block px-3 py-2 rounded-md">Login</Link>
+            {
+              Token_login ?
+                (<button onClick={closeMenu} className='bg-[#B91C1C] px-2 py-1 text-white'>Logout</button>) :
+                null
+            }
           </div>
         </div>
       )}

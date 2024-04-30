@@ -1,5 +1,7 @@
+import Data from "./Data"
 
 function Contactus() {
+  window.scrollTo(0,0)
   return (
     <>
       <section className="bg-blue-50 dark:bg-[#93C5FD]" id="contact">
@@ -110,6 +112,7 @@ function Contactus() {
           </div>
         </div>
       </section>
+      <Data/>
 
 
     </>

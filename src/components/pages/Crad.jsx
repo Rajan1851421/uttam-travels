@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-
+import { useSelector } from "react-redux";
 
 
 
@@ -55,9 +55,13 @@ const apiData = [
 ];
 
 function Card() {
-useEffect(()=>{
-window.scrollTo(0,0)
-},[])
+  const { Token_login, loading } = useSelector((state) => state.productStore)
+  console.log(Token_login);
+  console.log(loading);
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   return (
     <div className="bg-white bg-opacity-20 min-h-[100vh] flex items-center mx-auto ">
@@ -67,7 +71,7 @@ window.scrollTo(0,0)
             <div className="border rounded-lg hover:drop-shadow-md overflow-hidden relative bg-white" key={index}>
               <div className="cursor-pointer h-48 overflow-hidden">
                 <img src={data.image} alt="Profile" className="w-full h-full hover:scale-125 delay-200 duration-300 ease-in-out" />
-               
+
               </div>
               <div className="p-4 space-y-2 relative h-60 text-gray-400">
                 <div>
@@ -76,7 +80,7 @@ window.scrollTo(0,0)
                 <div>
                   <span style={myStyle} className="text-xl font-bold text-gray-600 overflow-hidden h-14 ">{data.title}</span>
                 </div>
-               
+
                 <div className="flex gap-2 items-center">
                   <span className="text-sm font-normal">{data.date}</span>
                 </div>
@@ -86,6 +90,24 @@ window.scrollTo(0,0)
                 <div className="bottom-2 absolute inset-x-0">
                   <div className="border-t mt-1 mb-1"></div>
                   <span className="text-xl text-gray-600 pl-4 text-center">{data.price}</span>
+                </div>
+                <div className="flex justify-between items-center gap-2">
+                  {
+                    Token_login ? (
+                      <button className="bg-[#052E16] text-white px-4 text-md hover:bg-[#1E1B4B] cursor-pointer hover:rounded-md py-1">
+                        Update
+                      </button>
+                    ) : null
+                  }
+                  <button className="bg-[#EAB308] text-white px-4 text-md hover:bg-[#1E1B4B] cursor-pointer hover:rounded-md py-1 ">View</button>
+
+                  {
+                    Token_login ? (
+                      <button className="bg-[#4C0519] text-white px-4 text-md hover:bg-[#1E1B4B] cursor-pointer hover:rounded-md py-1 ">Delete</button>
+
+                    ) : null
+                  }
+
                 </div>
               </div>
             </div>
