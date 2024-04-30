@@ -45,7 +45,7 @@ function Navbar() {
               <Link to="/login" onClick={closeMenu} className="text-white hover:bg-gray-700 px-3 py-2 rounded-md">Login</Link>
               {
                 Token_login ?
-                  (<button onClick={handleLogout} className='bg-[#B91C1C] px-2  text-white'>Logout</button>) :
+                  (<button onClick={handleLogout} className='bg-[#B91C1C] px-2 rounded-md text-white'>Logout</button>) :
                   null
               }
 
@@ -65,7 +65,7 @@ function Navbar() {
             <Link to="/login" onClick={closeMenu} className="text-white block px-3 py-2 rounded-md">Login</Link>
             {
               Token_login ?
-                (<button onClick={closeMenu} className='bg-[#B91C1C] px-2 py-1 text-white'>Logout</button>) :
+                (<button onClick={closeMenu} className='bg-[#B91C1C] rounded-md px-2 py-1 text-white'>Logout</button>) :
                 null
             }
           </div>
