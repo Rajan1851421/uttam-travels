@@ -79,7 +79,14 @@ function Navbar() {
             <Link to="/" onClick={closeMenu} className="text-white  px-3 py-2 rounded-md flex justify-center items-center "><RiHome4Fill className='mx-1 text-[#84CC16]' />Home</Link>
             <Link to="/service" onClick={closeMenu} className="text-white  px-3 py-2 rounded-md flex justify-center items-center "><FcServices className='mx-1' /> Services</Link>
             <Link to="/contact" onClick={closeMenu} className="text-white  px-3 py-2 rounded-md flex justify-center items-center "><IoIosCall className='mx-1' /> Contact</Link>
-            
+            {
+              Token_login ?
+              (
+                <Link to="/vechile"  className="text-white hover:bg-gray-700 px-3 py-2 rounded-md flex justify-center items-center "><FaCar className='mx-1' /> Add Vehicle</Link>
+
+              ):
+              null
+             } 
             {
                 Token_login ?
                   (<button onClick={handleLogout} className='bg-[#B91C1C] px-2 rounded-md text-white flex justify-center items-center '> <TbLogout className='mx-1 text-[#DCFCE7]' /> Logout</button>) :
