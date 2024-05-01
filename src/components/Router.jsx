@@ -3,6 +3,7 @@ import Home from './pages/Home'
 import Contactus from "./pages/Contactus"
 import Service from "./pages/Service"
 import Login from "./login/Login"
+import AddVehicleForm from './pages/AddVehicleForm'
 
 
 
@@ -14,6 +15,7 @@ function Router() {
         <Route path="/contact" element ={<Contactus/>}/>
         <Route path="/service" element={<Service/>}/>
         <Route path="/login" element={<Login/>}/>
+        <Route path='/vechile' element={<AddVehicleForm/> }/>
     </Routes>
       
     </>

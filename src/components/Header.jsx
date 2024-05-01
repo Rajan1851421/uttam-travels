@@ -2,6 +2,13 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearTokenLogin } from '../features/producrSlice';
+import { RiHome4Fill } from "react-icons/ri";
+import { FcServices } from "react-icons/fc";
+import { IoIosCall } from "react-icons/io";
+import { FaRegUserCircle } from "react-icons/fa";
+import { TbLogout } from "react-icons/tb";
+import { FaCar } from "react-icons/fa";
+
 
 
 function Navbar() {
@@ -17,7 +24,6 @@ function Navbar() {
     dispatch(clearTokenLogin())
   }
   const closeMenu = () => {
-    dispatch(clearTokenLogin())
     setIsOpen(false);
   };
 
@@ -40,14 +46,23 @@ function Navbar() {
           {/* Desktop menu items */}
           <div className="hidden md:block">
             <div className="flex space-x-4">
-              <Link to="/" onClick={closeMenu} className="text-white hover:bg-gray-700 px-3 py-2 rounded-md">Home</Link>
-              <Link to="/service" onClick={closeMenu} className="text-white hover:bg-gray-700 px-3 py-2 rounded-md">Services</Link>
-              <Link to="/contact" onClick={closeMenu} className="text-white hover:bg-gray-700 px-3 py-2 rounded-md">Contact</Link>
-              <Link to="/login" onClick={closeMenu} className="text-white hover:bg-gray-700 px-3 py-2 rounded-md">Login</Link>
+              <Link to="/"  className="text-white hover:bg-gray-700 px-3 py-2 rounded-md flex justify-center items-center "><RiHome4Fill className='mx-1 text-[#84CC16]' />Home</Link>
+              <Link to="/service"  className="text-white hover:bg-gray-700 px-3 py-2 rounded-md flex justify-center items-center"> <FcServices className='mx-1' /> Services</Link>
+              <Link to="/contact"  className="text-white hover:bg-gray-700 px-3 py-2 rounded-md flex justify-center items-center "><IoIosCall className='mx-1' /> Contact</Link>
+             {
+              Token_login ?
+              (
+                <Link to="/vechile"  className="text-white hover:bg-gray-700 px-3 py-2 rounded-md flex justify-center items-center "><FaCar className='mx-1' /> Add Vehicle</Link>
+
+              ):
+              null
+             }
+             
               {
                 Token_login ?
-                  (<button onClick={handleLogout} className='bg-[#B91C1C] px-2 rounded-md text-white'>Logout</button>) :
-                  null
+                  (<button onClick={handleLogout} className='bg-[#B91C1C] px-2 rounded-md text-white flex justify-center items-center '> <TbLogout className='mx-1 text-[#DCFCE7]' /> Logout</button>) :
+                  <Link to="/login"  className="text-white hover:bg-gray-700 px-3 py-2
+                  border rounded-md flex justify-center items-center "><FaRegUserCircle className='mx-1' /> Login</Link>
               }
 
 
@@ -60,15 +75,16 @@ function Navbar() {
       {isOpen && (
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1">
-            <Link to="/" onClick={closeMenu} className="text-white block px-3 py-2 rounded-md">Home</Link>
-            <Link to="/service" onClick={closeMenu} className="text-white block px-3 py-2 rounded-md">Services</Link>
-            <Link to="/contact" onClick={closeMenu} className="text-white block px-3 py-2 rounded-md">Contact</Link>
-            <Link to="/login" onClick={closeMenu} className="text-white block px-3 py-2 rounded-md">Login</Link>
+            <Link to="/" onClick={closeMenu} className="text-white  px-3 py-2 rounded-md flex justify-center items-center "><RiHome4Fill className='mx-1 text-[#84CC16]' />Home</Link>
+            <Link to="/service" onClick={closeMenu} className="text-white  px-3 py-2 rounded-md flex justify-center items-center "><FcServices className='mx-1' /> Services</Link>
+            <Link to="/contact" onClick={closeMenu} className="text-white  px-3 py-2 rounded-md flex justify-center items-center "><IoIosCall className='mx-1' /> Contact</Link>
+            
             {
-              Token_login ?
-                (<button onClick={closeMenu} className='bg-[#B91C1C] rounded-md px-2 py-1 text-white'>Logout</button>) :
-                null
-            }
+                Token_login ?
+                  (<button onClick={handleLogout} className='bg-[#B91C1C] px-2 rounded-md text-white flex justify-center items-center '> <TbLogout className='mx-1 text-[#DCFCE7]' /> Logout</button>) :
+                  <Link to="/login"  className="text-white hover:bg-gray-700 px-3 py-2
+                  border rounded-md flex justify-center items-center "><FaRegUserCircle className='mx-1' /> Login</Link>
+              }
           </div>
         </div>
       )}

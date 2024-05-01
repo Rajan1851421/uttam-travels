@@ -1,22 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { IoIosSend } from "react-icons/io";
 import { loginFetch } from "../../features/producrSlice";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
     const [userid, setUserId] = useState("kminchelle");
     const [password, setPassword] = useState("0lelplR");
     const [isLoading, setIsLoading] = useState(false); // State for managing loading state of login
     const dispatch = useDispatch();
+    const navigate = useNavigate()
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
-
-    const handleLogin = () => {       
+    const handleLogin = () => {
         setIsLoading(true);
         dispatch(loginFetch({ username: userid, password })).finally(() => {
             setIsLoading(false);
         });
+        navigate('/')
     };
 
 
