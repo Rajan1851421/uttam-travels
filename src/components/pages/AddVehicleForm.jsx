@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { FaCar } from "react-icons/fa";
 import { useSelector } from 'react-redux';
 import Login from '../login/Login';
@@ -10,7 +10,9 @@ function AddVehicleForm() {
   const [rate, setRate] = useState('')
   const { Token_login } = useSelector((state) => state.productStore)
 
-
+useEffect(()=>{
+  window.scrollTo(0,0)
+},[])
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -56,7 +58,7 @@ function AddVehicleForm() {
                 <option value="sedan">Sedan</option>
                 <option value="suv">SUV</option>
                 <option value="hatchback">Hatchback</option>
-                <option value="coupe">Coupe</option>
+                <option value="coupe">Coupele</option>
                 {/* Add more options as needed */}
               </select>
             </div>
