@@ -17,6 +17,7 @@ function Navbar() {
     dispatch(clearTokenLogin())
   }
   const closeMenu = () => {
+    dispatch(clearTokenLogin())
     setIsOpen(false);
   };
 
