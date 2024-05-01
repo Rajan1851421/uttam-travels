@@ -22,6 +22,7 @@ function Navbar() {
 
   const handleLogout = () => {
     dispatch(clearTokenLogin())
+    setIsOpen(false);
   }
   const closeMenu = () => {
     setIsOpen(false);
@@ -82,7 +83,7 @@ function Navbar() {
             {
                 Token_login ?
                   (<button onClick={handleLogout} className='bg-[#B91C1C] px-2 rounded-md text-white flex justify-center items-center '> <TbLogout className='mx-1 text-[#DCFCE7]' /> Logout</button>) :
-                  <Link to="/login"  className="text-white hover:bg-gray-700 px-3 py-2
+                  <Link to="/login" onClick={closeMenu}   className="text-white hover:bg-gray-700 px-3 py-2
                   border rounded-md flex justify-center items-center "><FaRegUserCircle className='mx-1' /> Login</Link>
               }
           </div>
