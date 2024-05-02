@@ -6,7 +6,10 @@ import { MdImportantDevices } from "react-icons/md";
 
 
 
-function Footer() {
+
+function Footer() {  
+
+   
     return (
         <>
             <footer>
@@ -14,7 +17,7 @@ function Footer() {
                     <div className="container px-4 mx-auto">
                         <div className="-mx-4 flex flex-wrap justify-between">
                             <div className="px-4 my-4 w-full xl:w-1/5">
-                            <div>
+                                <div>
                                     <h2 className="flex justify-start items-center text-2xl pb-4 mb-4 border-b-4 border-blue-600"> <MdLabelImportant className="text-red-700" />UT Travels</h2>
                                 </div>
 
@@ -26,7 +29,7 @@ function Footer() {
                             <div className="px-4 my-4 w-full sm:w-auto">
                                 <div>
                                     <h2 className="flex justify-start items-center text-2xl pb-4 mb-4 border-b-4 border-blue-600">
-                                         <MdImportantDevices className="text-red-700 mx-1 " />Important</h2>
+                                        <MdImportantDevices className="text-red-700 mx-1 " />Important</h2>
                                 </div>
                                 <ul className="leading-8">
                                     <li><Link to="/login" className="hover:text-blue-400">Login</Link></li>

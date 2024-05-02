@@ -1,7 +1,11 @@
+import { useEffect } from "react"
 import ContactCard from "./ContactCard"
 
 
 function About() {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <>
       <div className="mx-14">
@@ -44,7 +48,7 @@ function About() {
               </dir>
 
             </div>
-            
+
             {/* contact person */}
             <div className="mt-4 md:mt-8">
               <table className="w-full  border border-blue-500 max-w-xl mt-16 mx-auto my-4">
