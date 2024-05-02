@@ -4,6 +4,8 @@ import Contactus from "./pages/Contactus"
 import Service from "./pages/Service"
 import Login from "./login/Login"
 import AddVehicleForm from './pages/AddVehicleForm'
+import About from "./pages/About"
+
 
 
 
@@ -16,6 +18,7 @@ function Router() {
         <Route path="/service" element={<Service/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path='/vechile' element={<AddVehicleForm/> }/>
+        <Route path="/about" element={<About/>}/>
     </Routes>
       
     </>

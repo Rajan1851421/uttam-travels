@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import { FaLocationDot } from "react-icons/fa6";
 import { TiExportOutline } from "react-icons/ti";
 import { MdLabelImportant } from "react-icons/md";
+import { MdImportantDevices } from "react-icons/md";
 
 
 
@@ -9,7 +10,7 @@ function Footer() {
     return (
         <>
             <footer>
-                <div className="bg-gray-800 pt-4 text-gray-400">
+                <div className="bg-[#64748B] pt-4 text-white">
                     <div className="container px-4 mx-auto">
                         <div className="-mx-4 flex flex-wrap justify-between">
                             <div className="px-4 my-4 w-full xl:w-1/5">
@@ -24,7 +25,8 @@ function Footer() {
 
                             <div className="px-4 my-4 w-full sm:w-auto">
                                 <div>
-                                    <h2 className="flex justify-start items-center text-2xl pb-4 mb-4 border-b-4 border-blue-600"> <MdLabelImportant className="text-red-700" />Important</h2>
+                                    <h2 className="flex justify-start items-center text-2xl pb-4 mb-4 border-b-4 border-blue-600">
+                                         <MdImportantDevices className="text-red-700 mx-1 " />Important</h2>
                                 </div>
                                 <ul className="leading-8">
                                     <li><Link to="/login" className="hover:text-blue-400">Login</Link></li>

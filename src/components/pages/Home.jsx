@@ -6,12 +6,14 @@ import { FaStar } from "react-icons/fa6";
 import { FaShuttleVan } from "react-icons/fa";
 import { GiTakeMyMoney } from "react-icons/gi";
 import { TiTickOutline } from "react-icons/ti";
+import Slider from './Slider'
 
 
 
 function Home() {
     return (
         <>
+        <Slider/>
             <div className="mx-14">
                 <h1 className="text-center text-lg md:text-4xl mt-2 md:mt-6  font-extrabold bungee-spice-regular">welcome  </h1>
                 <p className='text-center font-bold mx-4 md:mx-48 dancing-script text-lg md:text-4xl my-4 '>
