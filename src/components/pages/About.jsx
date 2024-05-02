@@ -20,21 +20,31 @@ function About() {
               guidance of Mr. Pramod Kumar and Mr. Ashok Singh (owners), the company has become a tremendous travel agency in a quick time.
             </p>
             <h2 className="font-bold text-sm md:text-lg my-2 md:my-6 ">We have deigned several tour packages such as:</h2>
-            <ul className="list-disc space-y-2 ml-6 ">
-              <li>Heritage & culture tour</li>
-              <li>Group holidays</li>
-              <li>Honeymoon holidays</li>
-              <li>Family holidays</li>
-              <li> Wildlife tour</li>
-              <li>Yoga & Ayurveda tour</li>
-              <li>Adventure tour</li>
-              <li>Beach holidays/ beach island tour</li>
-              <li>Buddhist pilgrimage tour</li>
-              <li> Romantic holidays</li>
-              <li>Pilgrimage/ religious tour</li>
-              <li>Cruise holidays</li>
-              <li>Golden triangle tour</li>
-            </ul>
+            <div className="grid grid-cols-2">
+              <div>
+                <ul className="list-disc space-y-2 ml-6 ">
+                  <li>Heritage & culture tour</li>
+                  <li>Group holidays</li>
+                  <li>Honeymoon holidays</li>
+                  <li>Family holidays</li>
+                  <li> Wildlife tour</li>
+                  <li>Yoga & Ayurveda tour</li>
+                  <li>Adventure tour</li>
+                </ul>
+              </div>
+              <dir>
+                <ul className="list-disc space-y-2 ml-6 ">
+                  <li>Beach holidays/ beach island tour</li>
+                  <li>Buddhist pilgrimage tour</li>
+                  <li> Romantic holidays</li>
+                  <li>Pilgrimage/ religious tour</li>
+                  <li>Cruise holidays</li>
+                  <li>Golden triangle tour</li>
+                </ul>
+              </dir>
+
+            </div>
+            
             {/* contact person */}
             <div className="mt-4 md:mt-8">
               <table className="w-full  border border-blue-500 max-w-xl mt-16 mx-auto my-4">
