@@ -82,6 +82,7 @@ function Navbar() {
             <Link to="/service" onClick={closeMenu} className="text-white  px-3 py-2 rounded-md flex justify-center items-center "><FcServices className='mx-1' /> Services</Link>
             <Link to="/contact" onClick={closeMenu} className="text-white  px-3 py-2 rounded-md flex justify-center items-center "><IoIosCall className='mx-1' /> Contact</Link>
             <Link to="/about" onClick={closeMenu} className="text-white  px-3 py-2 rounded-md flex justify-center items-center "><FcAbout className='mx-1' /> About Us</Link>
+           
             {
               Token_login ?
               (

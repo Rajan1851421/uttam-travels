@@ -8,7 +8,7 @@ function About() {
   }, [])
   return (
     <>
-      <div className="mx-14">
+      <div className="mx-2 md:mx-14">
         <h1 className="text-md md:text-2xl font-extrabold mt-2 md:mt-10 ">About Us</h1>
         <div className="grid grid-cols-1 md:grid-cols-3 ">
           <div className="col-span-2 ">
@@ -88,7 +88,7 @@ function About() {
           </div>
           <div>
 
-            <img className=" p-2 rounded-md " src="https://img.freepik.com/free-vector/travel-time-typography-design-with-travelling-objects_1308-89005.jpg" alt="" />
+            <img className=" p-2 rounded-md hidden md:block " src="https://img.freepik.com/free-vector/travel-time-typography-design-with-travelling-objects_1308-89005.jpg" alt="" />
             {/* import contact card */}
             <div className="mt-4">
               <ContactCard />

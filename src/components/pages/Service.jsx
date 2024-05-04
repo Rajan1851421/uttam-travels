@@ -1,4 +1,5 @@
 
+
 function Service() {
 
   window.scrollTo(0, 0);
@@ -120,6 +121,56 @@ function Service() {
         </div>
 
       </div>
+
+      {/* OUR TOUR PACKEGES */}
+      <h1 className="uppercase text-md md:text-2xl font-extrabold my-4 text-center jost  ">Our Top Tour Packeges</h1>
+      <div className="grid grid-cols-1 md:grid-cols-3 my-4 mx-2 md:mx-14 ">
+        <div className="col-span-2">
+          <div className="grid grid-cols-1 md:grid-cols-3 border ">
+            <div className="col-span-2">
+              <div className="flex flex-col justify-start items-center p-2">
+                <p className=" font-semibold text-lg text-[#2563EB] capitalize ">Chandigarh Manali Shimla Tour</p>
+                <div className="my-2 ">
+                  <p><strong>Duration :</strong> 7 Nights / 8 Days</p>
+                  <p><strong>Destination Covered :</strong> Chandigarh City, Manali, Shimla, Kufri, Solang Valley, Tibetan Monasteries, Hadimba Temple, Jakhu Temple, Open Hand Monument, Rock Garden, Capitol Complex</p>
+                  <p><strong>Tour Activities :</strong> Hill Stations & Valleys, Hill Stations & Valleys, Lakes & Rivers</p>
+                </div>
+                <button className="bg-[#172554] text-white px-3 py-2 text-sm ">Enquiry Now for Best Deals</button>
+              </div>
+            </div>
+            <div>
+              <img className="h-full w-full" src="https://ttw.wlimg.com/package-images/photo-big/dir_25/746270/321991.jpg" alt="" />
+            </div>
+          </div>
+        </div>
+        <div>
+        </div>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 my-4 mx-2 md:mx-14 mt-4 ">
+        <div className="col-span-2">
+          <div className="grid grid-cols-1 md:grid-cols-3 border ">
+            <div className="col-span-2">
+              <div className="flex flex-col justify-start items-center p-2">
+                <p className=" font-semibold text-lg text-[#2563EB] capitalize ">Varanasi Sarnath Tour</p>
+                <div className="my-2 ">
+                  <p><strong>Duration :</strong>  3 Nights / 4 Days</p>
+                  <p><strong>Destination Covered :</strong>  Varanasi, Sarnath, Durga Temple, Vishwanath Temple</p>
+                  <p><strong>Tour Activities :</strong> Religious & Pilgrimage</p>
+                </div>
+                <button className="bg-[#172554] text-white px-3 py-2 text-sm ">Enquiry Now for Best Deals</button>
+              </div>
+            </div>
+            <div>
+              <img className="h-full w-full" src="https://ttw.wlimg.com/package-images/photo-small/dir_25/746270/321992.jpg" alt="" />
+            </div>
+          </div>
+        </div>
+        <div>
+        </div>
+      </div>
+
+
+
 
     </div>
   )

@@ -3,13 +3,24 @@ import { FaLocationDot } from "react-icons/fa6";
 import { TiExportOutline } from "react-icons/ti";
 import { MdLabelImportant } from "react-icons/md";
 import { MdImportantDevices } from "react-icons/md";
+import { FaArrowUp } from "react-icons/fa6";
 
 
 
 
-function Footer() {  
 
-   
+function Footer() {
+    const handleGoToTop = () => {
+        const currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
+
+        if (currentScroll > 0) {
+            const nextScroll = currentScroll - Math.ceil(currentScroll / 10);
+            window.scrollTo(0, nextScroll);
+            requestAnimationFrame(handleGoToTop);
+        }
+    };
+
+
     return (
         <>
             <footer>
@@ -82,6 +93,11 @@ function Footer() {
                             </div>
                         </div>
                     </div>
+                    <div onClick={handleGoToTop} className="border p-3 fixed bottom-2 right-2 bg-[#FACC15] rounded-full text-[#172554] cursor-pointer ">
+                        <FaArrowUp />
+                    </div>
+
+
                 </div>
                 <div className="bg-indigo-700 py-4 text-gray-100">
                     <div className="container mx-auto px-4">
