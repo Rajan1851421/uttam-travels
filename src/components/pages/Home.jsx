@@ -7,6 +7,7 @@ import { FaShuttleVan } from "react-icons/fa";
 import { GiTakeMyMoney } from "react-icons/gi";
 import { TiTickOutline } from "react-icons/ti";
 import Slider from './Slider'
+import Testimonials from './Testimonials';
 
 
 
@@ -496,6 +497,9 @@ function Home() {
 
                     </tbody>
                 </table>
+            </div>
+            <div>
+                <Testimonials/>
             </div>
 
 
