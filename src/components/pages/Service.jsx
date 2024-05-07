@@ -23,6 +23,7 @@ function Service() {
 
   const handleSubmit = () => {
     console.log(formData);
+    setIsOpen(false)
 
 
   };
