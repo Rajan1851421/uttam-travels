@@ -7,6 +7,10 @@ import { useState } from "react";
 function Testimonials() {
     
     const [testmonialform,setTestimonialForm] = useState(false)
+
+    useState(()=>{
+        window.scrollTo(0,0)
+    },[])
     const SubmitTestimonilas=()=>{
         setTestimonialForm(prevState => !prevState);
     }
