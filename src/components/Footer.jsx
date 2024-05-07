@@ -4,6 +4,7 @@ import { TiExportOutline } from "react-icons/ti";
 import { MdLabelImportant } from "react-icons/md";
 import { MdImportantDevices } from "react-icons/md";
 import { FaArrowUp } from "react-icons/fa6";
+import { FaWhatsapp } from "react-icons/fa6";
 
 
 
@@ -25,6 +26,13 @@ function Footer() {
         <>
             <footer>
                 <div className="bg-[#64748B] pt-4 text-white">
+                    {/* whatsap chat add */}
+
+                    <a href="https://wa.me/7052002200" target="_blank" rel="noopener noreferrer" className="border p-3 fixed bottom-8 left-5 bg-[#22C55E] rounded-full text-[#172554] cursor-pointer hover:rounded-4xl hover:px-10">
+                        <FaWhatsapp class="text-white text-lg font-bold" />
+                    </a>
+
+
                     <div className="container px-4 mx-auto">
                         <div className="-mx-4 flex flex-wrap justify-between">
                             <div className="px-4 my-4 w-full xl:w-1/5">
