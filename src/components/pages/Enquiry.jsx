@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 
 function Enquiry() {
@@ -7,9 +7,12 @@ function Enquiry() {
   const [mobile, setMobile] = useState(null)
   const [msg, setMsg] = useState('')
 
-  const handleFormSubmit =(e)=>{
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+  const handleFormSubmit = (e) => {
     e.preventDefault()
-    console.log(fname,email,mobile,msg);
+    console.log(fname, email, mobile, msg);
     alert("Our Team Reach out ASAP")
   }
 
