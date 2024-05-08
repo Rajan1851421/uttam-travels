@@ -1,68 +1,118 @@
-import React from 'react'
 
-function Slider() {
+import Glide from "@glidejs/glide"
+import { useEffect } from "react"
+
+export default function SliderControlsInside() {
+    
+  useEffect(() => {
+    const slider = new Glide(".glide-01", {
+      type: "slider",
+      focusAt: "center",
+      perView: 1,
+      autoplay: 3000,
+      animationDuration: 700,
+      gap: 0,
+      classes: {
+        nav: {
+          active: "[&>*]:bg-wuiSlate-700",
+        },
+      },
+    }).mount()
+
+    return () => {
+      slider.destroy()
+    }
+  }, [])
+
   return (
-    <div>
-      
-
-<div id="default-carousel" class="relative w-full" data-carousel="slide">
-    {/* <!-- Carousel wrapper --> */}
-    <div class="relative h-56 overflow-hidden  md:h-96">
-         {/* <!-- Item 1 --> */}
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="https://catalog.wlimg.com/4/746270/other-images/513305.jpg" 
-            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
+    <>
+      {/*<!-- Component: Slider with controls inside --> */}
+      <div className="relative w-full glide-01  ">
+        {/*    <!-- Slides --> */}
+        <div className="overflow-hidden h-[400px] " data-glide-el="track">
+          <ul className="whitespace-no-wrap flex-no-wrap [backface-visibility: hidden] [transform-style: preserve-3d] [touch-action: pan-Y] [will-change: transform] relative flex w-full overflow-hidden p-0">
+            <li>
+              <img
+                src="https://catalog.wlimg.com/4/746270/other-images/513308.jpg"
+                className="w-full max-w-full max-h-full m-auto"
+              />
+            </li>
+            <li>
+              <img
+                src="https://catalog.wlimg.com/4/746270/other-images/513307.jpg"
+                className="w-full max-w-full max-h-full m-auto"
+              />
+            </li>
+            <li>
+              <img
+                src="https://catalog.wlimg.com/4/746270/other-images/513309.jpg"
+                className="w-full max-w-full max-h-full m-auto"
+              />
+            </li>
+            <li>
+              <img
+                src="https://catalog.wlimg.com/4/746270/other-images/513305.jpg"
+                className="w-full max-w-full max-h-full m-auto"
+              />
+            </li>
+            <li>
+              <img
+                src="https://catalog.wlimg.com/4/746270/other-images/513306.jpg"
+                className="w-full max-w-full max-h-full m-auto"
+              />
+            </li>
+          </ul>
         </div>
-        {/* <!-- Item 2 --> */}
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="https://catalog.wlimg.com/4/746270/other-images/513307.jpg"
-             class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
-        </div>
-        {/* <!-- Item 3 --> */}
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="https://catalog.wlimg.com/4/746270/other-images/513308.jpg" 
-            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
-        </div>
-        {/* <!-- Item 4 --> */}
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="https://catalog.wlimg.com/4/746270/other-images/513309.jpg" 
-            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
-        </div>
-        {/* <!-- Item 5 --> */}
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="https://plus.unsplash.com/premium_photo-1697730421390-63ae0487b986?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8dXR0YXJha2hhbmQlMjBpbmRpYXxlbnwwfHwwfHx8MA%3D%3D"
-             class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
-        </div>
-    </div>
-    {/* <!-- Slider indicators --> */}
-    <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
-    </div>
-    {/* <!-- Slider controls --> */}
-    <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+        {/*    <!-- Controls --> */}
+        <div
+          className="absolute left-0 flex items-center justify-between w-full h-0 px-4 top-1/2 "
+          data-glide-el="controls"
+        >
+          <button
+            className="hidden md:block inline-flex items-center justify-center w-8 h-8 transition duration-300 border rounded-full border-slate-700 bg-white/20 text-slate-700 hover:border-slate-900 hover:text-slate-900 focus-visible:outline-none lg:h-12 lg:w-12"
+            data-glide-dir="<"
+            aria-label="prev slide"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              className="w-5 h-5"
+            >
+              <title>prev slide</title>
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18"
+              />
             </svg>
-            <span class="sr-only">Previous</span>
-        </span>
-    </button>
-    <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+          </button>
+          <button
+            className="hidden md:block inline-flex items-center justify-center w-8 h-8 transition duration-300 border rounded-full border-slate-700 bg-white/20 text-slate-700 hover:border-slate-900 hover:text-slate-900 focus-visible:outline-none lg:h-12 lg:w-12"
+            data-glide-dir=">"
+            aria-label="next slide"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              className="w-5 h-5"
+            >
+              <title>next slide</title>
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+              />
             </svg>
-            <span class="sr-only">Next</span>
-        </span>
-    </button>
-</div>
-
-    </div>
+          </button>
+        </div>
+      </div>
+      {/*<!-- End Slider with controls inside --> */}
+    </>
   )
 }
-
-export default Slider

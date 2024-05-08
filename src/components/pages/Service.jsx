@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ImCross } from "react-icons/im";
 
 import EnquiryFrom from './Enquiry'
+import BankDetails from "./BankDetails";
 
 
 function Service() {
@@ -288,8 +289,10 @@ function Service() {
           </div>
         </div >
 
-      )
-      }
+      )}
+      <div>
+        <BankDetails/>
+      </div>
 
 
 
