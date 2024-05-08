@@ -3,6 +3,7 @@ import { ImCross } from "react-icons/im";
 
 import EnquiryFrom from './Enquiry'
 import BankDetails from "./BankDetails";
+import JackpotPackeges from './JackpotPackages'
 
 
 function Service() {
@@ -48,6 +49,10 @@ function Service() {
       </div>
 
       <div className=" ">
+        <div className="mx-2 md:mx-14 bg-[#CCFBF1] my-2 pt-10 ">
+          <JackpotPackeges/>
+
+        </div>
         <div className="p-8 roumded-lg shadow-lg bg-[#FEF9C3] m-1 md:m-10  ">
           <div className="mx-auto ">
             <h1 className="font-bold text-lg md:text-3xl uppercase text-[#78716C] ">Jackpot Deals on Top Selling Packages</h1>
@@ -244,7 +249,7 @@ function Service() {
 
 
 
-     
+
 
       {/* enquiry modal */}
 
@@ -291,7 +296,7 @@ function Service() {
 
       )}
       <div>
-        <BankDetails/>
+        <BankDetails />
       </div>
 
 

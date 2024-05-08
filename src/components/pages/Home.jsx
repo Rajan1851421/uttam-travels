@@ -11,6 +11,7 @@ import Testimonials from './Testimonials';
 
 
 
+
 function Home() {
     return (
         <>
@@ -22,6 +23,7 @@ function Home() {
                 </p>
 
             </div>
+            
 
             <h1 className="text-center text-lg md:text-4xl mt-5 md:mt-6 font-extrabold bungee-spice-regular">Top Vehicle</h1>
 
