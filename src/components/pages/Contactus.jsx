@@ -4,7 +4,7 @@ function Contactus() {
   window.scrollTo(0,0)
   return (
     <>
-      <section className="bg-blue-50 dark:bg-[#93C5FD]" id="contact">
+      <section className="bg-blue-50 dark:bg-[#FBCFE8] my-2 md:my-6 mx-2 md:mx-14" id="contact">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
           <div className="mb-4">
             <div className="mb-6 max-w-3xl text-center sm:text-center md:mx-auto md:mb-12">
@@ -30,7 +30,7 @@ function Contactus() {
                 </p>
                 <ul className="mb-6 md:mb-0">
                   <li className="flex">
-                    <div className="flex h-10 w-10 items-center justify-center rounded bg-blue-900 text-gray-50">
+                    <div className="flex h-10 w-10 items-center justify-center rounded bg-blue-900 text-gray-50 ">
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"
                         strokeLinejoin="round" className="h-6 w-6">
