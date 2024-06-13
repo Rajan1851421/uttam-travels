@@ -6,8 +6,8 @@ import { loginFetch } from "../../features/producrSlice";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
-    const [userid, setUserId] = useState("kminchelle");
-    const [password, setPassword] = useState("0lelplR");
+    const [userid, setUserId] = useState('emilys');
+    const [password, setPassword] = useState('emilyspass');
     const [isLoading, setIsLoading] = useState(false); // State for managing loading state of login
     const dispatch = useDispatch();
     const navigate = useNavigate()

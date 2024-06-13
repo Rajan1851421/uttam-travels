@@ -17,12 +17,22 @@ export const loginFetch = createAsyncThunk(
   "loginFetch",
   async ({ username, password }, { rejectWithValue }) => {
     try {
-      const response = await axios.post("https://dummyjson.com/auth/login", {
-        username,
-        password,
+      const response = await fetch('https://dummyjson.com/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          username,
+          password,
+          expiresInMins: 30, // optional, defaults to 60
+        })
       });
 
-      return response.data; // Return the data, not the entire response
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await response.json();
+      return data; // Return the data, not the entire response
     } catch (error) {
       return rejectWithValue(error.message); // Return error message
     }
