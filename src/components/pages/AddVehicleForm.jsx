@@ -10,14 +10,57 @@ function AddVehicleForm() {
   const [rate, setRate] = useState('')
   const { Token_login } = useSelector((state) => state.productStore)
 
-useEffect(()=>{
-  window.scrollTo(0,0)
-},[])
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(carImg, carName, carType, rate);
+  
+    // Create a vehicle object
+    const vehicle = {
+      carImg: carImg ? URL.createObjectURL(carImg) : null, // Convert file to a URL for preview (not for actual storage)
+      carName,
+      carType,
+      rate,
+    };
+  
+    // Retrieve existing session storage data
+    const existingData = sessionStorage.getItem("Vehicle_added");
+    let newData = [];
+  
+    if (existingData) {
+      try {
+        // Parse existing data from session storage
+        newData = JSON.parse(existingData);
+        
+        // Check if newData is an array, if not then convert to an array
+        if (!Array.isArray(newData)) {
+          newData = [newData];
+        }
+      } catch (error) {
+        console.error('Error parsing existing session data:', error);
+        newData = [];
+      }
+    }
+  
+    // Append the new vehicle data to the existing array
+    newData.push(vehicle);
+  
+    // Store the updated array back into session storage
+    sessionStorage.setItem("Vehicle_added", JSON.stringify(newData));  
+    clearFormFields();
+    console.log('Vehicle added:', vehicle);
   };
+  
+  const clearFormFields = () => {
+  // Reset or clear the form fields here
+  setCarImg(null);
+  setCarName("");
+  setCarType("");
+  setRate("");
+};
+  
 
   return (
     <div className="mx-2 md:mx-[150px] my-2 md:my-4">
@@ -58,7 +101,7 @@ useEffect(()=>{
                 <option value="sedan">Sedan</option>
                 <option value="suv">SUV</option>
                 <option value="hatchback">Hatchback</option>
-                <option value="coupe">Coupele</option>
+                <option value="coupe">Couple</option>
                 {/* Add more options as needed */}
               </select>
             </div>
