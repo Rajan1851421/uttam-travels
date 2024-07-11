@@ -1,54 +1,70 @@
-import  { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { FaCar } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import Login from '../login/Login';
 import axios from 'axios';
 
+
 function AddVehicleForm() {
   const [carImg, setCarImg] = useState(null);
   const [carName, setCarName] = useState('');
   const [carType, setCarType] = useState('');
+  const [showStatus, setShowStatus] = useState(false);
   const [rate, setRate] = useState('');
- 
+  const [uploading, setUploading] = useState(false); // State to track uploading status
+  const [uploaded, setUploaded] = useState(false); // State to track uploaded status
+  
   const { Token_login } = useSelector((state) => state.productStore);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    axios.delete(`https://pro-backend-three-alpha.vercel.app/vechile/668fc0390f5f907712a29cc7`)
-    .then(response=>{
-      console.log(response)
-    })
-    .catch(error=>{
-      console.log(error)
-    })
+
   }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-console.log("A")
+    console.log("A")
     try {
+      setUploading(true); // Start uploading
       const formData = new FormData();
-      formData.append('photo', carImg); // File upload
-      formData.append('carName', carName); // Other form data
-      formData.append('carType', carType); // Other form data
-      formData.append('rate', rate); // Other form data
+      formData.append('photo', carImg); 
+      formData.append('carName', carName); 
+      formData.append('carType', carType); 
+      formData.append('rate', rate);
+      
 
       const response = await axios.post('http://localhost:3000/vechile/', formData, {
         headers: {
-          'Content-Type': 'multipart/form-data', // Ensure correct content type
+          'Content-Type': 'multipart/form-data', 
         },
       });
-
-      console.log('Response:', response.data);
-      // Handle success response here
+      setShowStatus(true);
+      setTimeout(() => {
+        setShowStatus(false); // Hide status message after 3 seconds
+      }, 3000);
+      console.log('Response:', response.data);     
+      setUploaded(true); // Set uploaded
+      setTimeout(() => {
+        setUploaded(false); // Reset uploaded status after 3 seconds
+        setCarImg(''); // Clear form data
+        setCarName('');
+        setCarType('');
+        setRate('');
+      }, 3000);
     } catch (error) {
       console.error('Error:', error);
-      // Handle error here
+    } finally {
+      setUploading(false); // Finish uploading
     }
   };
 
+  
+
   return (
     <div className="mx-2 md:mx-[150px] my-2 md:my-4">
+      <div className="w-full">
+          {showStatus && <h2 className="py-1 text-center bg-green-500 fixed px-10 top-[100px] z-50 left-[43%] ">Uploaded Successfully</h2>}
+        </div>
       <div className="flex flex-col justify-center items-center">
         <h1 className="text-md md:text-2xl font-extrabold text-center">ADD NEW VEHICLE</h1>
         <FaCar className="text-lg md:text-6xl text-[#4C0519] border rounded-full h-10 w-10 p-1" />
@@ -123,13 +139,16 @@ console.log("A")
               placeholder="INR 12/km"
             />
           </div>
-         
+
           <div className="flex items-center justify-between">
             <button
               type="submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ${
+                uploading ? 'opacity-50 cursor-not-allowed' : ''
+              }`}
+              disabled={uploading}
             >
-              Add Vehicle
+              {uploading ? 'Uploading...' : uploaded ? 'Uploaded' : 'Add Vehicle'}
             </button>
           </div>
         </form>

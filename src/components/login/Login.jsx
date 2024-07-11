@@ -6,8 +6,8 @@ import { loginFetch } from "../../features/producrSlice";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
-    const [userid, setUserId] = useState('emilys');
-    const [password, setPassword] = useState('emilyspass');
+    const [userid, setUserId] = useState('');
+    const [password, setPassword] = useState('');
     const [isLoading, setIsLoading] = useState(false); // State for managing loading state of login
     const dispatch = useDispatch();
     const navigate = useNavigate()
@@ -31,7 +31,7 @@ function Login() {
             <div className="h-screen flex justify-center items-center">
                 <div className="bg-gradient-to-r from-sky-500 to-indigo-500 mx-4 p-8 rounded shadow-md w-full md:w-1/2 lg:w-1/3 shadow-orange-500 ">
                     <h1 className="text-3xl font-bold mb-8 text-center">Login</h1>
-                    <form>
+                    <form onSubmit={handleLogin}>
                         <div className="mb-4">
                             <label
                                 className="block font-semibold text-gray-700 mb-2"
@@ -43,8 +43,8 @@ function Login() {
                                 className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 id="email"
                                 type="text"
-                                placeholder="Enter your User ID"
-                                readOnly
+                                placeholder="Enter your username"
+                               required
                                 value={userid}
                                 onChange={(e) => setUserId(e.target.value)}
                             />
@@ -61,7 +61,7 @@ function Login() {
                                 id="password"
                                 type="password"
                                 placeholder="Enter your password"
-                                readOnly
+                               required
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                             />
@@ -69,8 +69,8 @@ function Login() {
                         <div className="mb-6">
                             <button
                                 className="bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline flex items-center"
-                                type="button"
-                                onClick={handleLogin}
+                                type="submit"
+                              
                                 disabled={isLoading} // Disable button when loading
                             >
                                 {isLoading ? "Please Wait..." : "Login "}

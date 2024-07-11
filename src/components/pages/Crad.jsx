@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-
-import {fetchVechile} from '../../features/producrSlice'
-import {DeleteVechile} from '../../features/producrSlice'
+import { useSelector, useDispatch } from "react-redux";
+import { fetchVechile, DeleteVechile } from '../../features/producrSlice';
 
 const myStyle = {
   display: "-webkit-box",
@@ -11,31 +8,36 @@ const myStyle = {
   WebkitBoxOrient: "vertical",
 };
 
-
-
-
-
 function Card() {
-  const { Token_login,vechiles,status } = useSelector((state) => state.productStore)
+  const [showStatus, setShowStatus] = useState(false);
+  const { Token_login, vechiles, status } = useSelector((state) => state.productStore);
+  const dispatch = useDispatch();
 
-  const dispatch = useDispatch()
-  
-useEffect(()=>{
-  dispatch(fetchVechile())
-  
-})
-const handleDelete = (id) => {  
-  console.log('Deleting item with id:', id);  
-  dispatch(DeleteVechile(id))
-  alert(status)
-};
-  
+  useEffect(() => {
+    window.scrollTo(0,0);
+    dispatch(fetchVechile());
+  }, [dispatch]);
+
+  const handleDelete = async (id) => {
+    console.log('Deleting item with id:', id);
+    try {
+      await dispatch(DeleteVechile(id)); // Wait for deletion to complete
+      setShowStatus(true); // Show status message    
+      setTimeout(() => {
+        setShowStatus(false); // Hide status message after 3 seconds
+      }, 3000);
+      dispatch(fetchVechile()); // Fetch vehicles again after deletion
+    } catch (error) {
+      console.error("Error deleting vehicle:", error);
+    }
+  };
 
   return (
-    
     <div className="bg-white bg-opacity-20 min-h-[100vh] flex items-center mx-auto ">
-      
       <div className=" mx-auto w-full ">
+        <div className="w-full">
+          {showStatus && <h2 className="py-1 text-center bg-red-500 fixed px-10 top-[100px] z-50 left-[43%] ">{status}</h2>}
+        </div>
         <div className="grid grid-cols-1 w-full  md:grid-cols-2 lg:grid-cols-4 gap-4 py-10 text-left mx-1 md:mx-5 xl:mx-10">
           {vechiles.map((data, index) => (
             <div className="border rounded-lg hover:drop-shadow-md overflow-hidden relative bg-white" key={index}>
@@ -52,9 +54,6 @@ const handleDelete = (id) => {
                 <div className="flex gap-2 items-center">
                   <span className="text-sm font-normal"></span>
                 </div>
-                {/* <div className="flex  justify-start items-center">
-                  <span className="text-sm font-normal">{data.location}</span>
-                </div> */}
                 <div className="bottom-2 absolute inset-x-0">
                   <div className="border-t mt-1 mb-1"></div>
                   <span className="text-xl text-gray-600 pl-4 text-center">{`Rate:${data.rate} Km `} </span>

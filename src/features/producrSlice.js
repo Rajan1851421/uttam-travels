@@ -31,16 +31,7 @@ export const  fetchVechile = createAsyncThunk(
 
 
 
-// export const addVechile = createAsyncThunk(
-//   "addVechile"
-//   async(_,{rejectWithValue})=>{
-//     try {
-//       const response = await axios.post(`https://pro-backend-three-alpha.vercel.app/vechile`formData)
-//     } catch (error) {
-//       return rejectWithValue(error.message);
-//     }
-//   }
-// )
+
 
 
 
@@ -61,7 +52,7 @@ export const loginFetch = createAsyncThunk(
   "loginFetch",
   async ({ username, password }, { rejectWithValue }) => {
     try {
-      const response = await fetch('https://dummyjson.com/auth/login', {
+      const response = await fetch('https://pro-backend-three-alpha.vercel.app/user/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -133,8 +124,8 @@ export const productDetails = createSlice({
       })
       .addCase(fetchVechile.rejected,(state,action)=>{
         state.loading = false;
-        state.vechiles = action.payload
-      })
+        state.error = action.payload
+      })      
 
 
       .addCase(DeleteVechile.pending,(state)=>{
