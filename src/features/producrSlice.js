@@ -1,6 +1,50 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+
+
+export const  DeleteVechile = createAsyncThunk(
+  "DeleteVechile",
+  async(id,{rejectWithValue})=>{
+    try {
+      const response = await axios.delete(`https://pro-backend-three-alpha.vercel.app/vechile/${id}`)
+      return response.data
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+)
+
+
+export const  fetchVechile = createAsyncThunk(
+  "fetchVechile",
+  async(_,{rejectWithValue})=>{
+    try {
+      const response = await axios.get(`https://pro-backend-three-alpha.vercel.app/vechile`)
+      return response.data
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+)
+
+
+
+
+// export const addVechile = createAsyncThunk(
+//   "addVechile"
+//   async(_,{rejectWithValue})=>{
+//     try {
+//       const response = await axios.post(`https://pro-backend-three-alpha.vercel.app/vechile`formData)
+//     } catch (error) {
+//       return rejectWithValue(error.message);
+//     }
+//   }
+// )
+
+
+
+
 export const fetchProduct = createAsyncThunk(
   "fetchProduct",
   async (_, { rejectWithValue }) => {
@@ -44,6 +88,7 @@ export const productDetails = createSlice({
   initialState: {
     products: [],
     successMessage: null,
+    vechiles:[],
     status: "",
     Token_login: null,
     loading: false,
@@ -78,6 +123,32 @@ export const productDetails = createSlice({
         state.loading = false;
         state.error = action.payload;
       })
+
+      .addCase(fetchVechile.pending,(state)=>{
+        state.loading = true;
+      })
+      .addCase(fetchVechile.fulfilled,(state,action)=>{
+        state.loading = false;
+        state.vechiles = action.payload
+      })
+      .addCase(fetchVechile.rejected,(state,action)=>{
+        state.loading = false;
+        state.vechiles = action.payload
+      })
+
+
+      .addCase(DeleteVechile.pending,(state)=>{
+      state.loading = true;
+      })
+      .addCase(DeleteVechile.fulfilled,(state)=>{
+        state.loading = false;
+        state.status="Delete succesfully"
+      })
+      .addCase(DeleteVechile.rejected,(action,state)=>{
+        state.loading = false;
+        state.error = action.payload;
+      })
+
   },
 });
 
