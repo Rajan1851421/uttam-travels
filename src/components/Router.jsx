@@ -6,6 +6,7 @@ import Login from "./login/Login"
 import AddVehicleForm from './pages/AddVehicleForm'
 import About from "./pages/About"
 import Testimonials from "./pages/Testimonials"
+import SignupForm from "./login/SignupFrom"
 
 
 
@@ -21,6 +22,7 @@ function Router() {
         <Route path='/vechile' element={<AddVehicleForm/> }/>
         <Route path="/about" element={<About/>}/>
         <Route path='/testimonials' element={<Testimonials/>}/>
+        <Route path='/signup' element={<SignupForm/>} />
     </Routes>
       
     </>

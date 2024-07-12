@@ -5,12 +5,15 @@ import { MdLabelImportant } from "react-icons/md";
 import { MdImportantDevices } from "react-icons/md";
 import { FaArrowUp } from "react-icons/fa6";
 import { FaWhatsapp } from "react-icons/fa6";
+import {useSelector} from 'react-redux'
 
 
 
 
 
 function Footer() {
+    const { Token_login } = useSelector((state) => state.productStore);
+
     const handleGoToTop = () => {
         const currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
 
@@ -52,6 +55,7 @@ function Footer() {
                                 </div>
                                 <ul className="leading-8">
                                     <li><Link to="/login" className="hover:text-blue-400">Login</Link></li>
+                                    {Token_login ? (<li><Link to="/signup" className="hover:text-blue-400">Register Here</Link></li>) : null}
                                     <li><Link to="" className="hover:text-blue-400">Terms &amp; Conditions</Link></li>
                                     <li><Link to="" className="hover:text-blue-400">Privacy Policy</Link></li>
                                     <li><Link to="" className="hover:text-blue-400">Contact Us</Link></li>
