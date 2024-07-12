@@ -51,22 +51,20 @@ function Card() {
                 <div>
                   <span style={myStyle} className="text-xl font-bold text-gray-600 overflow-hidden h-14 capitalize ">{`Car Name : ${data.carName}`}</span>
                 </div>
-                <div className="flex gap-2 items-center">
-                  <span className="text-sm font-normal"></span>
-                </div>
-                <div className="bottom-2 absolute inset-x-0">
+                
+                <div className="bottom-1 absolute inset-x-0">
                   <div className="border-t mt-1 mb-1"></div>
-                  <span className="text-xl text-gray-600 pl-4 text-center">{`Rate:${data.rate} Km `} </span>
+                  <span className="text-sm pl-4 text-gray-600  text-center">{`Rate:${data.rate} Km `} </span>
                 </div>
                 <div className="flex justify-between items-center gap-2">
                   {Token_login ? (
-                    <button className="bg-[#052E16] text-white px-4 text-md hover:bg-[#1E1B4B] cursor-pointer hover:rounded-md py-1">
+                    <button className="bg-[#79e2a4] mt-1 rounded-sm text-white px-4 text-md hover:bg-[#1E1B4B] cursor-pointer hover:rounded-md py-1">
                       Update
                     </button>
                   ) : null}
-                  <button className="bg-[#EAB308] text-white px-4 text-md hover:bg-[#1E1B4B] cursor-pointer hover:rounded-md py-1">View</button>
+                  <button className="bg-[#ab9a67] rounded-sm text-white px-4 text-md hover:bg-[#1E1B4B] cursor-pointer hover:rounded-md py-1">View</button>
                   {Token_login ? (
-                    <button onClick={() => handleDelete(data._id)} className="bg-[#4C0519] text-white px-4 text-md hover:bg-[#1E1B4B] cursor-pointer hover:rounded-md py-1">Delete</button>
+                    <button onClick={() => handleDelete(data._id)} className="bg-[#824b5b] rounded-sm text-white px-4 text-md hover:bg-[#1E1B4B] cursor-pointer hover:rounded-md py-1">Delete</button>
                   ) : null}
                 </div>
               </div>

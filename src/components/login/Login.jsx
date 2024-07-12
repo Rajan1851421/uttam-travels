@@ -9,7 +9,7 @@ function Login() {
     const [userid, setUserId] = useState('');
     const [password, setPassword] = useState('');
     const [isLoading, setIsLoading] = useState(false); // State for managing loading state of login
-    
+    const [showPassword,setShowPassword] = useState(false)
     const [login,setLogin] = useState(true)
     const dispatch = useDispatch();
     const navigate = useNavigate()
@@ -28,7 +28,9 @@ function Login() {
         });
         navigate('/')
     };
-
+    const toggleShowPassword = () => {
+        setShowPassword(!showPassword);
+      };
    
 
 
@@ -68,12 +70,18 @@ function Login() {
                             <input
                                 className="border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                                 id="password"
-                                type="password"
+                                type={showPassword ? 'text' : 'password'}
                                 placeholder="Enter your password"
                                 required
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                             />
+                            <div className="mt-2">
+                                    <label className="flex items-center">
+                                        <input type="checkbox" checked={showPassword} onChange={toggleShowPassword} />
+                                        <span className="ml-2 text-sm">Show Password</span>
+                                    </label>
+                                </div>
                         </div>
                         <div className="mb-6">
                             <button

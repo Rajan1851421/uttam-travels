@@ -14,11 +14,12 @@ const RegistrationForm = () => {
     const [password, setPassword] = useState('');
     const [meassge, setMeassge] = useState('')
     const [status, setShowstatus] = useState(false)
+    const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate()
 
-useEffect(()=>{
-    window.scrollTo(0,20)
-},[])
+    useEffect(() => {
+        window.scrollTo(0, 20)
+    }, [])
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
@@ -49,6 +50,9 @@ useEffect(()=>{
     const handleSignInMove = () => {
         navigate('/login')
     }
+    const toggleShowPassword = () => {
+        setShowPassword(!showPassword);
+      };
 
     return (
         <div className="h-[100vh] items-center pb-10 flex justify-center px-5 lg:px-0">
@@ -102,13 +106,19 @@ useEffect(()=>{
                                 />
                                 <input
                                     className="w-full px-5 py-2 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
-                                    type="password"
+                                    type={showPassword ? 'text' : 'password'}
                                     placeholder="Password"
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                 />
+                                <div className="mt-2">
+                                    <label className="flex items-center">
+                                        <input type="checkbox" checked={showPassword} onChange={toggleShowPassword} />
+                                        <span className="ml-2 text-sm">Show Password</span>
+                                    </label>
+                                </div>
                                 <select
-                                required
+                                    required
                                     value={usertype}
                                     onChange={(e) => setUsertype(e.target.value)}
                                     className="w-full px-5 py-2 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
