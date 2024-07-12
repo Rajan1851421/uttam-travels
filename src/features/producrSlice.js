@@ -7,7 +7,7 @@ export const  DeleteVechile = createAsyncThunk(
   "DeleteVechile",
   async(id,{rejectWithValue})=>{
     try {
-      const response = await axios.delete(`https://pro-backend-three-alpha.vercel.app/vechile/${id}`)
+      const response = await axios.delete(`https://pro-backend-three-alpha.vercel.app/vehicle/${id}`)
       return response.data
     } catch (error) {
       return rejectWithValue(error.message);
@@ -20,7 +20,7 @@ export const  fetchVechile = createAsyncThunk(
   "fetchVechile",
   async(_,{rejectWithValue})=>{
     try {
-      const response = await axios.get(`https://pro-backend-three-alpha.vercel.app/vechile`)
+      const response = await axios.get(`https://pro-backend-three-alpha.vercel.app/vehicle`)
       return response.data
     } catch (error) {
       return rejectWithValue(error.message);
