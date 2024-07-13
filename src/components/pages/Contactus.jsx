@@ -1,7 +1,35 @@
-import Data from "./Data"
+import { useRef, useState,useEffect } from 'react';
+import emailjs from '@emailjs/browser';
+import { toast } from "react-toastify";
 
 function Contactus() {
+  const [loading, setLoading] = useState(false)
+  useEffect(() => {
   window.scrollTo(0,0)
+  }, [])
+  const form = useRef();
+  const sendEmail = (e) => {
+    e.preventDefault();
+    setLoading(true)
+    emailjs.sendForm('service_0ky6glr', 'template_b7qmekf', form.current, {
+      publicKey: '6Dz5OmCSaJ4po8_yB',
+    })
+      .then(
+        () => {
+          toast.success("Message Sent")
+          setLoading(false)
+        },
+        () => {
+          toast.error("Message Failed")                              
+        },
+      );
+  };
+
+
+
+
+
+
   return (
     <>
       <section className="bg-blue-50 dark:bg-[#FBCFE8] my-2 md:my-6 mx-2 md:mx-14" id="contact">
@@ -15,18 +43,14 @@ function Contactus() {
                 className="font-heading mb-4 font-bold tracking-tight text-gray-900  text-3xl sm:text-5xl">
                 Get in Touch
               </h2>
-              <p className="mx-auto mt-4 max-w-3xl text-xl text-gray-600 ">In hac habitasse platea
-                dictumst
-              </p>
+             
             </div>
           </div>
           <div className="flex items-stretch justify-center">
             <div className="grid md:grid-cols-2">
               <div className="h-full pr-6">
                 <p className="mt-3 mb-12 text-lg text-gray-600 ">
-                  Class aptent taciti sociosqu ad
-                  litora torquent per conubia nostra, per inceptos himenaeos. Duis nec ipsum orci. Ut scelerisque
-                  sagittis ante, ac tincidunt sem venenatis ut.
+                These options are concise and clear, while still conveying the message that you're open to communication.
                 </p>
                 <ul className="mb-6 md:mb-0">
                   <li className="flex">
@@ -41,7 +65,7 @@ function Contactus() {
                       </svg>
                     </div>
                     <div className="ml-4 mb-4">
-                      <h3 className="mb-2 text-lg font-medium leading-6 text-gray-900 dark:text-white">Our Address
+                      <h3 className="mb-2 text-lg font-medium leading-6 text-gray-900 text-[#312E81]">Our Address
                       </h3>
                       <p className="text-gray-600 ">Hoplapur Road</p>
                       <p className="text-gray-600 ">Shivpur Varanasi U.P India</p>
@@ -60,7 +84,7 @@ function Contactus() {
                       </svg>
                     </div>
                     <div className="ml-4 mb-4">
-                      <h3 className="mb-2 text-lg font-medium leading-6 text-gray-900 dark:text-white">Contact
+                      <h3 className="mb-2 text-lg font-medium leading-6 text-gray-900 text-[#312E81]">Contact
                       </h3>
                       <p className="text-gray-600 ">Mobile: +91-7052002200</p>
                       <p className="text-gray-600 ">Mail: uttamtravel@mail.com </p>
@@ -76,7 +100,7 @@ function Contactus() {
                       </svg>
                     </div>
                     <div className="ml-4 mb-4">
-                      <h3 className="mb-2 text-lg font-medium leading-6 text-gray-900 dark:text-white">Working
+                      <h3 className="mb-2 text-lg font-medium leading-6 text-gray-900 text-[#312E81]">Working
                         hours</h3>
                       <p className="text-gray-600 ">Monday - Friday: 08:00 - 17:00</p>
                       <p className="text-gray-600 ">Saturday &amp; Sunday: 08:00 - 12:00</p>
@@ -85,34 +109,30 @@ function Contactus() {
                 </ul>
               </div>
               <div className="card h-fit max-w-6xl p-5 md:p-12" id="form">
-                <h2 className="mb-4 text-2xl font-bold dark:text-white">Ready to Get Started?</h2>
-                <form id="contactForm">
-                  <div className="mb-6">
-                    <div className="mx-0 mb-1 sm:mb-4">
-                      <div className="mx-0 mb-1 sm:mb-4">
-                        <label className="pb-1 text-xs uppercase tracking-wider"></label>
-                        <input type="text" id="name" autoComplete="given-name" placeholder="Your name" className="mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md dark:text-gray-300 sm:mb-0" name="name" />
-                      </div>
-                      <div className="mx-0 mb-1 sm:mb-4">
-                        <label className="pb-1 text-xs uppercase tracking-wider"></label>
-                        <input type="email" id="email" autoComplete="email" placeholder="Your email address" className="mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md dark:text-gray-300 sm:mb-0" name="email" />
-                      </div>
-                    </div>
-                    <div className="mx-0 mb-1 sm:mb-4">
-                      <label className="pb-1 text-xs uppercase tracking-wider"></label>
-                      <textarea id="textarea" name="textarea" cols="30" rows="5" placeholder="Write your message..." className="mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md dark:text-gray-300 sm:mb-0"></textarea>
-                    </div>
+                <h2 className="mb-4 text-2xl font-bold text-[#312E81] uppercase ">Ready to Get Started?</h2>
+                <form ref={form} onSubmit={sendEmail} className='flex flex-col ' >
+                  <div className="flex flex-col">
+                    <label htmlFor="from_name" className="text-sm font-medium mb-2">Name</label>
+                    <input type="text" id="from_name" name="from_name" className="border rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-indigo-500" />
                   </div>
-                  <div className="text-center">
-                    <button type="submit" className="w-full bg-blue-800 text-white px-6 py-3 font-xl rounded-md sm:mb-0">Send Message</button>
+                  <div className="flex flex-col">
+                    <label htmlFor="to_name" className="text-sm font-medium mb-2">Mobile</label>
+                    <input type="number" id="to_name" name="to_name" className="border rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-indigo-500" />
                   </div>
+                  <div className="flex flex-col">
+                    <label htmlFor="message" className="text-sm font-medium mb-2">Message</label>
+                    <textarea id="message" name="message" className="border rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-indigo-500 h-24"></textarea>
+                  </div>
+                  <button type="submit" value='send' className="bg-indigo-500 text-white mt-2 px-4 py-2 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    {loading ? "Sending ..." : 
+                    'Send'}</button>
                 </form>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <Data/>
+
 
 
     </>

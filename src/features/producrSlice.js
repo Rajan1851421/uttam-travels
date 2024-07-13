@@ -109,9 +109,11 @@ export const productDetails = createSlice({
       .addCase(loginFetch.fulfilled, (state, action) => {
         state.loading = false;
         state.Token_login = action.payload.token;
+        state.status = "Login Successfully"
       })
       .addCase(loginFetch.rejected, (state, action) => {
         state.loading = false;
+        console.log("Error:",action.payload)
         state.error = action.payload;
       })
 
