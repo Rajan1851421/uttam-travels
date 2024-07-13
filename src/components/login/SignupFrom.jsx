@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from 'axios'
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 
 
@@ -12,8 +13,7 @@ const RegistrationForm = () => {
     const [phone, setPhone] = useState('');
     const [usertype, setUsertype] = useState('');
     const [password, setPassword] = useState('');
-    const [meassge, setMeassge] = useState('')
-    const [status, setShowstatus] = useState(false)
+   
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate()
 
@@ -31,12 +31,8 @@ const RegistrationForm = () => {
         formData.append('password', password);
         axios.post(`https://pro-backend-three-alpha.vercel.app/user/signup`, formData)
             .then(response => {
-                console.log(response);
-                setMeassge(response.data.message)
-                setShowstatus(true)
-                setTimeout(() => {
-                    setShowstatus(false)
-                }, 3000)
+                console.log(response);                
+                toast.success(response.data.message)            
                 setUserName('');
                 setEmail('');
                 setPhone('');
@@ -74,9 +70,7 @@ const RegistrationForm = () => {
                             <p className="text-[12px] text-gray-500">
                                 Hey enter your details to create your account
                             </p>
-                            {status && <div>
-                                <h1 className=" bg-[#86EFAC] text-[#15803D] z-40 w-50 sm-w-full py-2 rounded-sm " > {meassge} </h1>
-                            </div>}
+                           
                         </div>
                         <form className="w-full flex-1 mt-8" onSubmit={handleFormSubmit}>
                             <div className="mx-auto max-w-xs flex flex-col gap-4">

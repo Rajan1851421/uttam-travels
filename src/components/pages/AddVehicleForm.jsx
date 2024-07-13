@@ -3,13 +3,13 @@ import { FaCar } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import Login from '../login/Login';
 import axios from 'axios';
+import { toast } from "react-toastify";
 
 
 function AddVehicleForm() {
   const [carImg, setCarImg] = useState(null);
   const [carName, setCarName] = useState('');
-  const [carType, setCarType] = useState('');
-  const [showStatus, setShowStatus] = useState(false);
+  const [carType, setCarType] = useState('');  
   const [rate, setRate] = useState('');
   const [uploading, setUploading] = useState(false); // State to track uploading status
   const [uploaded, setUploaded] = useState(false); // State to track uploaded status
@@ -33,15 +33,14 @@ function AddVehicleForm() {
       formData.append('rate', rate);
       
 
-      const response = await axios.post('http://localhost:3000/vechile/', formData, {
+      const response = await axios.post('http://localhost:3000/vehicle/', formData, {
         headers: {
           'Content-Type': 'multipart/form-data', 
         },
       });
-      setShowStatus(true);
-      setTimeout(() => {
-        setShowStatus(false); // Hide status message after 3 seconds
-      }, 3000);
+      
+        toast.success("Vehicle Added Successfully ") // Hide status message after 3 seconds
+      
       console.log('Response:', response.data);     
       setUploaded(true); // Set uploaded
       setTimeout(() => {
@@ -50,7 +49,7 @@ function AddVehicleForm() {
         setCarName('');
         setCarType('');
         setRate('');
-      }, 3000);
+      }, 1000);
     } catch (error) {
       console.error('Error:', error);
     } finally {
@@ -62,9 +61,7 @@ function AddVehicleForm() {
 
   return (
     <div className="mx-2 md:mx-[150px] my-2 md:my-4">
-      <div className="w-full">
-          {showStatus && <h2 className="py-1 text-center bg-green-500 fixed px-10 top-[100px] z-50 left-[43%] ">Uploaded Successfully</h2>}
-        </div>
+      
       <div className="flex flex-col justify-center items-center">
         <h1 className="text-md md:text-2xl font-extrabold text-center">ADD NEW VEHICLE</h1>
         <FaCar className="text-lg md:text-6xl text-[#4C0519] border rounded-full h-10 w-10 p-1" />
