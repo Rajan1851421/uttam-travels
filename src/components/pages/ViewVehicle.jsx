@@ -9,7 +9,7 @@ const Modal = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        console.log(ViewVechile.Vehicle.carName )
+       
        
     }, [])
     const handleCloseModal = () => {
