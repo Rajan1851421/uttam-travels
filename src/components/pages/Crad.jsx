@@ -13,7 +13,7 @@ const myStyle = {
 
 function Card() {
 
-  const { Token_login, vechiles, status } = useSelector((state) => state.productStore);
+  const { Token_login, vechiles } = useSelector((state) => state.productStore);
   const dispatch = useDispatch();
   const navigate = useNavigate()
 
@@ -34,7 +34,7 @@ function Card() {
     console.log('Deleting item with id:', id);
     try {
       await dispatch(DeleteVechile(id)); // Wait for deletion to complete      
-      toast.error(status)
+      toast.error("Delete Successfully ")
       dispatch(fetchVechile()); // Fetch vehicles again after deletion
     } catch (error) {
       console.error("Error deleting vehicle:", error);
