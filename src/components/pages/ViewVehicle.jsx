@@ -35,9 +35,9 @@ const Modal = () => {
 
                             <p className="text-center text-md sm:text-sm lg-text-md font-bold underline uppercase ">{ViewVechile && ViewVechile.Vehicle.carName}</p>
                             <div>
-                                <img src={ViewVechile && ViewVechile.Vehicle.image} alt="image" />
+                                {/* <img src={ViewVechile && ViewVechile.Vehicle.image} alt="image" /> */}
                             </div>
-                            <p className="text-center text-md sm:text-sm lg-text-md font-bold   ">{`Rate : ${ViewVechile && ViewVechile.Vehicle.rate} Km`}</p>
+                            {/* <p className="text-center text-md sm:text-sm lg-text-md font-bold   ">{`Rate : ${ViewVechile && ViewVechile.Vehicle.rate} Km`}</p> */}
 
                            
                             <div className="flex items-center justify-end p-6 border-t border-solid border-gray-300 rounded-b">
