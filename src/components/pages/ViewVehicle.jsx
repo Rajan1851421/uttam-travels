@@ -31,9 +31,9 @@ const Modal = () => {
                     <div className="relative w-auto max-w-3xl mx-auto my-6">
                        
                         <div className="relative flex flex-col w-full p-2 bg-white border-0 rounded-lg shadow-lg outline-none focus:outline-none">
-                          
+                          <h1>Scorpio</h1>
 
-                            <p className="text-center text-md sm:text-sm lg-text-md font-bold underline uppercase ">{ViewVechile && ViewVechile.Vehicle.carName}</p>
+                            {/* <p className="text-center text-md sm:text-sm lg-text-md font-bold underline uppercase ">{ViewVechile && ViewVechile.Vehicle.carName}</p> */}
                             <div>
                                 {/* <img src={ViewVechile && ViewVechile.Vehicle.image} alt="image" /> */}
                             </div>
