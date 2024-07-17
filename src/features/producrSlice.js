@@ -28,6 +28,30 @@ export const  fetchVechile = createAsyncThunk(
   }
 )
 
+export const  getAllUser = createAsyncThunk(
+  "getAllUser",
+  async(_,{rejectWithValue})=>{
+    try {
+      const response = await axios.get(`https://pro-backend-three-alpha.vercel.app/user`)
+      return response.data
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+)
+export const  deleteUser = createAsyncThunk(
+  "deleteUser",
+  async(id,{rejectWithValue})=>{
+    try {
+      const response = await axios.get(`https://pro-backend-three-alpha.vercel.app/user/${id}`)
+      return response.data
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+)
+
+
 export const  viewVehicle = createAsyncThunk(
   "viewVehicle",
   async(id,{rejectWithValue})=>{
@@ -48,17 +72,7 @@ export const  viewVehicle = createAsyncThunk(
 
 
 
-export const fetchProduct = createAsyncThunk(
-  "fetchProduct",
-  async (_, { rejectWithValue }) => {
-    try {
-      const response = await axios.get(`https://fakestoreapi.com/products`);
-      return response.data; // Return the data, not the entire response
-    } catch (error) {
-      return rejectWithValue(error.message); // Return error message
-    }
-  }
-);
+
 
 export const loginFetch = createAsyncThunk(
   "loginFetch",
@@ -96,7 +110,8 @@ export const productDetails = createSlice({
     Token_login: null,
     loading: false,
     error: null,
-    ViewVechile:[]
+    ViewVechile:[],
+    AllUser:[]
   },
   reducers: {
     clearTokenLogin: (state) => {
@@ -105,17 +120,7 @@ export const productDetails = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchProduct.pending, (state) => {
-        state.loading = true;
-      })
-      .addCase(fetchProduct.fulfilled, (state, action) => {
-        state.loading = false;
-        state.products = action.payload;
-      })
-      .addCase(fetchProduct.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
-      })
+      
       .addCase(loginFetch.pending, (state) => {
         state.loading = true;
       })
@@ -140,8 +145,29 @@ export const productDetails = createSlice({
       .addCase(fetchVechile.rejected,(state,action)=>{
         state.loading = false;
         state.error = action.payload
-      })      
-
+      })     
+      .addCase(getAllUser.pending ,(state)=>{
+        state.loading = true;
+      }) 
+      .addCase(getAllUser.fulfilled ,(state,action)=>{
+        state.loading = false;
+        state.AllUser = action.payload;
+      })
+      .addCase(getAllUser.rejected , (state,action)=>{
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(deleteUser.pending,(state)=>{
+        state.loading = true;
+        })
+        .addCase(deleteUser.fulfilled,(state)=>{
+          state.loading = false;                 
+          state.status="Delete succesfully"
+        })
+        .addCase(deleteUser.rejected,(action,state)=>{
+          state.loading = false;
+          state.error = action.payload;
+        })
 
       .addCase(DeleteVechile.pending,(state)=>{
       state.loading = true;

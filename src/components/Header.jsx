@@ -10,6 +10,7 @@ import { TbLogout } from "react-icons/tb";
 import { FaCar } from "react-icons/fa";
 import { FcAbout } from "react-icons/fc";
 import { MdOutlinePersonSearch } from "react-icons/md";
+import { IoSettings } from "react-icons/io5";
 
 
 
@@ -34,8 +35,7 @@ function Navbar() {
     <nav className="bg-gray-800 py-2 sticky top-0 left-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <Link to='/' className='flex justify-start'>  <img className='h-[70px] w-[70px] rounded-full' src="https://images.unsplash.com/photo-1715346848307-84385a7f3a86?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MXx8fGVufDB8fHx8fA%3D%3D" alt="" />
-        </Link>
+          <Link to='/' className='flex justify-start'>  <img className='h-[70px] w-[70px] rounded-full' src="https://images.unsplash.com/photo-1715346848307-84385a7f3a86?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MXx8fGVufDB8fHx8fA%3D%3D" alt="" /> </Link>
 
         {/* Mobile menu button */}
         <div className="flex md:hidden">
@@ -54,6 +54,7 @@ function Navbar() {
             <Link to="/contact" className="text-white hover:bg-gray-700 px-3 py-2 rounded-md flex justify-center items-center "><IoIosCall className='mx-1' /> Contact</Link>
             <Link to="/about" className="text-white hover:bg-gray-700 px-3 py-2 rounded-md flex justify-center items-center "><FcAbout className='mx-1' /> About Us</Link>
             <Link to="/testimonials" className="text-white hover:bg-gray-700 px-3 py-2 rounded-md flex justify-center items-center "><MdOutlinePersonSearch className='mx-1' />Testimonials</Link>
+            {Token_login ?( <Link to="/manage_admin" className="text-white hover:bg-gray-700 px-3 py-2 rounded-md flex justify-center items-center "><IoSettings className='mx-1' />Manage</Link>) : null}
             {
               Token_login ?
                 (
@@ -86,6 +87,7 @@ function Navbar() {
           <Link to="/contact" onClick={closeMenu} className="text-white  px-3 py-2 rounded-md flex justify-center items-center "><IoIosCall className='mx-1' /> Contact</Link>
           <Link to="/about" onClick={closeMenu} className="text-white  px-3 py-2 rounded-md flex justify-center items-center "><FcAbout className='mx-1' /> About Us</Link>
           <Link to="/testimonials" onClick={closeMenu} className="text-white  px-3 py-2 rounded-md flex justify-center items-center "><MdOutlinePersonSearch className='mx-1' />Testimonials</Link>
+          {Token_login ?( <Link to="/manage_admin" className="text-white hover:bg-gray-700 px-3 py-2 rounded-md flex justify-center items-center "><IoSettings className='mx-1' />Manage</Link>) : null}
 
           {
             Token_login ?
