@@ -28,6 +28,18 @@ export const  fetchVechile = createAsyncThunk(
   }
 )
 
+export const  viewVehicle = createAsyncThunk(
+  "viewVehicle",
+  async(id,{rejectWithValue})=>{
+    try {
+      const response = await axios.get(`https://pro-backend-three-alpha.vercel.app/vehicle/${id}`)
+      return response.data
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+)
+
 
 
 
@@ -84,6 +96,7 @@ export const productDetails = createSlice({
     Token_login: null,
     loading: false,
     error: null,
+    ViewVechile:[]
   },
   reducers: {
     clearTokenLogin: (state) => {
@@ -138,6 +151,19 @@ export const productDetails = createSlice({
         state.status="Delete succesfully"
       })
       .addCase(DeleteVechile.rejected,(action,state)=>{
+        state.loading = false;
+        state.error = action.payload;
+      })
+
+      .addCase(viewVehicle.pending ,(state)=>{
+        state.loading = true;
+      })
+      .addCase(viewVehicle.fulfilled ,(state,action)=>{
+        state.loading = false;
+        state.ViewVechile = action.payload
+
+      })
+      .addCase(viewVehicle.rejected ,(state,action)=>{
         state.loading = false;
         state.error = action.payload;
       })
