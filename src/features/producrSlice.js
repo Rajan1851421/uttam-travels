@@ -112,7 +112,8 @@ export const productDetails = createSlice({
     error: null,
     ViewVechile:[],
     AllUser:[],
-    UserType:null
+    UserType:null,
+    UserName:null
   },
   reducers: {
     clearTokenLogin: (state) => {
@@ -131,6 +132,7 @@ export const productDetails = createSlice({
         console.log(action.payload)
         console.log(action.payload.useType)
         state.UserType = action.payload.useType
+        state.UserName = action.payload.username
         state.status = "Login Successfully"
       })
       .addCase(loginFetch.rejected, (state, action) => {

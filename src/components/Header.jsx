@@ -18,9 +18,9 @@ import { IoSettings } from "react-icons/io5";
 function Navbar() {
   // const { isAuthenticated } = useAuth0();
   const dispatch = useDispatch()
-  const { Token_login } = useSelector((state) => state.productStore)
+  const { Token_login, UserType,UserName } = useSelector((state) => state.productStore)
   const [isOpen, setIsOpen] = useState(false);
-  
+
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -38,7 +38,7 @@ function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link to='/' className='flex justify-start'>  <img className='h-[70px] w-[70px] rounded-full' src="https://images.unsplash.com/photo-1715346848307-84385a7f3a86?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MXx8fGVufDB8fHx8fA%3D%3D" alt="" /> </Link>
-
+          <span className="text-bold text-yellow-500 " >{Token_login && UserName ? UserName : null }</span>
           {/* Mobile menu button */}
           <div className="flex md:hidden">
             <button onClick={toggleMenu} className="text-white p-2 focus:outline-none">
@@ -56,7 +56,7 @@ function Navbar() {
               <Link to="/contact" className="text-white hover:bg-gray-700 px-3 py-2 rounded-md flex justify-center items-center "><IoIosCall className='mx-1' /> Contact</Link>
               <Link to="/about" className="text-white hover:bg-gray-700 px-3 py-2 rounded-md flex justify-center items-center "><FcAbout className='mx-1' /> About Us</Link>
               <Link to="/testimonials" className="text-white hover:bg-gray-700 px-3 py-2 rounded-md flex justify-center items-center "><MdOutlinePersonSearch className='mx-1' />Testimonials</Link>
-              {Token_login ? (<Link to="/manage_admin" className="text-white hover:bg-gray-700 px-3 py-2 rounded-md flex justify-center items-center "><IoSettings className='mx-1' />Manage</Link>) : null}
+              {Token_login && UserType === "admin" ? (<Link to="/manage_admin" className="text-white hover:bg-gray-700 px-3 py-2 rounded-md flex justify-center items-center "><IoSettings className='mx-1' />Manage</Link>) : null}
               {
                 Token_login ?
                   (

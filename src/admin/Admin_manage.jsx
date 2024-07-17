@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 function AdminManage() {
-    const { Token_login, AllUser, loading } = useSelector((state) => state.productStore);
+    const { Token_login, AllUser, UserType } = useSelector((state) => state.productStore);
     const dispatch = useDispatch();
     const [loadingStates, setLoadingStates] = useState({});
 
@@ -38,7 +38,7 @@ function AdminManage() {
 
     return (
         <>
-            {Token_login ? (
+            {Token_login && UserType==='admin'  ? (
                 <div className="bg-[#FCA5A5]">
                     <div className="mx-auto w-[90%] p-2 bg-white rounded-sm py-2">
                         <h1 className="text-center">Admin Control</h1>
