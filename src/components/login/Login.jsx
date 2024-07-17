@@ -3,9 +3,11 @@ import { useDispatch } from "react-redux";
 import { IoIosSend } from "react-icons/io";
 import { loginFetch } from "../../features/producrSlice.js"; // Corrected import path
 import { useNavigate } from "react-router-dom";
+// import { useAuth0 } from '@auth0/auth0-react';
 import { toast } from "react-toastify";
 
 function Login() {
+    // const { loginWithRedirect ,logout ,isAuthenticated,user  } = useAuth0();
     const [userid, setUserId] = useState('');
     const [password, setPassword] = useState('');
     const [isLoading, setIsLoading] = useState(false);
@@ -16,6 +18,7 @@ function Login() {
 
     useEffect(() => {
         window.scrollTo(0, 0);
+        
     }, []);
 
     const handleLogin = async (e) => {
@@ -99,6 +102,8 @@ function Login() {
                                 </button>
                             </div>
                         </form>
+                        {/* <button className="border p-2 " onClick={() => loginWithRedirect()}>Log In</button>
+                        <button className="border p-2 " onClick={() => logout()}>Log out</button> */}
                     </div>
                 </div>
             

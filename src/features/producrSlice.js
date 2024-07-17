@@ -43,7 +43,7 @@ export const  deleteUser = createAsyncThunk(
   "deleteUser",
   async(id,{rejectWithValue})=>{
     try {
-      const response = await axios.get(`https://pro-backend-three-alpha.vercel.app/user/${id}`)
+      const response = await axios.delete(`https://pro-backend-three-alpha.vercel.app/user/${id}`)
       return response.data
     } catch (error) {
       return rejectWithValue(error.message);
@@ -111,7 +111,8 @@ export const productDetails = createSlice({
     loading: false,
     error: null,
     ViewVechile:[],
-    AllUser:[]
+    AllUser:[],
+    UserType:null
   },
   reducers: {
     clearTokenLogin: (state) => {
@@ -127,6 +128,9 @@ export const productDetails = createSlice({
       .addCase(loginFetch.fulfilled, (state, action) => {
         state.loading = false;
         state.Token_login = action.payload.token;
+        console.log(action.payload)
+        console.log(action.payload.useType)
+        state.UserType = action.payload.useType
         state.status = "Login Successfully"
       })
       .addCase(loginFetch.rejected, (state, action) => {
@@ -160,9 +164,10 @@ export const productDetails = createSlice({
       .addCase(deleteUser.pending,(state)=>{
         state.loading = true;
         })
-        .addCase(deleteUser.fulfilled,(state)=>{
-          state.loading = false;                 
-          state.status="Delete succesfully"
+        .addCase(deleteUser.fulfilled,(state,action)=>{
+          state.loading = false;    
+          console.log(action.payload)             
+          state.status="Delete succesfully user"
         })
         .addCase(deleteUser.rejected,(action,state)=>{
           state.loading = false;
