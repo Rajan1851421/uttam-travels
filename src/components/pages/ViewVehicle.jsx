@@ -9,7 +9,7 @@ const Modal = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-       
+        console.log(ViewVechile.Vehicle.carName )
        
     }, [])
     const handleCloseModal = () => {
@@ -29,18 +29,17 @@ const Modal = () => {
             {showModal && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none">
                     <div className="relative w-auto max-w-3xl mx-auto my-6">
-                        {/*content*/}
+                       
                         <div className="relative flex flex-col w-full p-2 bg-white border-0 rounded-lg shadow-lg outline-none focus:outline-none">
-                            {/*header*/}
+                          
 
-                            <p className="text-center text-md sm:text-sm lg-text-md font-bold underline uppercase ">{ViewVechile.Vehicle.carName}</p>
+                            <p className="text-center text-md sm:text-sm lg-text-md font-bold underline uppercase ">{ViewVechile && ViewVechile.Vehicle.carName}</p>
                             <div>
-                                <img src={ViewVechile.Vehicle.image} alt="image" />
+                                <img src={ViewVechile && ViewVechile.Vehicle.image} alt="image" />
                             </div>
-                            <p className="text-center text-md sm:text-sm lg-text-md font-bold   ">{`Rate : ${ViewVechile.Vehicle.rate} Km`}</p>
+                            <p className="text-center text-md sm:text-sm lg-text-md font-bold   ">{`Rate : ${ViewVechile && ViewVechile.Vehicle.rate} Km`}</p>
 
-                            
-                            {/*footer*/}
+                           
                             <div className="flex items-center justify-end p-6 border-t border-solid border-gray-300 rounded-b">
                                 <button
                                     onClick={handleCloseModal}
