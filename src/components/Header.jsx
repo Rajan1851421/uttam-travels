@@ -72,8 +72,6 @@ function Navbar() {
                   <Link to="/login" className="text-white hover:bg-gray-700 px-3 py-2
                   border rounded-md flex justify-center items-center "><FaRegUserCircle className='mx-1' /> Login</Link>
               }
-
-
             </div>
           </div>
         </div>
@@ -89,7 +87,7 @@ function Navbar() {
               <Link to="/contact" onClick={closeMenu} className="text-white  px-3 py-2 rounded-md flex justify-center items-center "><IoIosCall className='mx-1' /> Contact</Link>
               <Link to="/about" onClick={closeMenu} className="text-white  px-3 py-2 rounded-md flex justify-center items-center "><FcAbout className='mx-1' /> About Us</Link>
               <Link to="/testimonials" onClick={closeMenu} className="text-white  px-3 py-2 rounded-md flex justify-center items-center "><MdOutlinePersonSearch className='mx-1' />Testimonials</Link>
-              {Token_login ? (<Link to="/manage_admin" className="text-white hover:bg-gray-700 px-3 py-2 rounded-md flex justify-center items-center "><IoSettings className='mx-1' />Manage</Link>) : null}
+              {Token_login ? (<Link to="/manage_admin" onClick={closeMenu}  className="text-white hover:bg-gray-700 px-3 py-2 rounded-md flex justify-center items-center "><IoSettings className='mx-1' />Manage</Link>) : null}
 
               {
                 Token_login ?
