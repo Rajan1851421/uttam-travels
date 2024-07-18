@@ -16,6 +16,33 @@ export const  DeleteVechile = createAsyncThunk(
 )
 
 
+// fetch testimnilas
+export const  fetchTestimonial = createAsyncThunk(
+  "fetchTestimonial",
+  async(_,{rejectWithValue})=>{
+    try {
+      const response = await axios.get(`https://pro-backend-three-alpha.vercel.app/testimonial`)
+      return response.data
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+)
+
+// Delete testimonial
+export const  deleteTestimonial = createAsyncThunk(
+  "deleteTestimonial",
+  async(id,{rejectWithValue})=>{
+    try {
+      const response = await axios.delete(`https://pro-backend-three-alpha.vercel.app/testimonial/${id}`)
+      return response.data
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+)
+// fetch vehicle
+
 export const  fetchVechile = createAsyncThunk(
   "fetchVechile",
   async(_,{rejectWithValue})=>{
@@ -39,6 +66,7 @@ export const  getAllUser = createAsyncThunk(
     }
   }
 )
+
 export const  deleteUser = createAsyncThunk(
   "deleteUser",
   async(id,{rejectWithValue})=>{
@@ -51,6 +79,7 @@ export const  deleteUser = createAsyncThunk(
   }
 )
 
+// viewvehicle by id
 
 export const  viewVehicle = createAsyncThunk(
   "viewVehicle",
@@ -113,7 +142,8 @@ export const productDetails = createSlice({
     ViewVechile:[],
     AllUser:[],
     UserType:null,
-    UserName:null
+    UserName:null,
+    Testimonial:[],
   },
   reducers: {
     clearTokenLogin: (state) => {
@@ -200,6 +230,32 @@ export const productDetails = createSlice({
         state.loading = false;
         state.error = action.payload;
       })
+
+     
+
+      .addCase(fetchTestimonial.pending ,(state)=>{
+        state.loading = true
+      })
+      .addCase(fetchTestimonial.fulfilled , (state,action)=>{
+        state.loading = false;
+        state.Testimonial = action.payload
+      })
+      .addCase(fetchTestimonial.rejected,(state,action)=>{
+        state.loading = false;
+        state.error = action.payload
+      })
+      .addCase(deleteTestimonial.pending,(state)=>{
+        state.loading = true;
+        })
+        .addCase(deleteTestimonial.fulfilled,(state,action)=>{
+          state.loading = false;    
+          console.log(action.payload)             
+          state.status="Delete succesfully Tesimonial"
+        })
+        .addCase(deleteTestimonial.rejected,(action,state)=>{
+          state.loading = false;
+          state.error = action.payload;
+        })
 
   },
 });

@@ -1,36 +1,52 @@
-import  { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { FaStar, FaStarHalfAlt } from 'react-icons/fa';
 import { IoIosSend } from "react-icons/io";
-
+import { useDispatch, useSelector } from 'react-redux';
+import { toast } from "react-toastify";
 import ContactCard from './ContactCard';
+import { fetchTestimonial } from '../../features/producrSlice';
+import axios from 'axios'
 
 const Testimonials = () => {
   const [testmonialform, setTestmonialform] = useState(false);
   const [name, setName] = useState('');
   const [rating, setRating] = useState('');
-  const [message, setMessage] = useState('');
-  const [testimonials, setTestimonials] = useState([]);
+  const [message, setMessage] = useState(''); 
+  const dispatch = useDispatch()
+  const { Testimonial } = useSelector((state) => state.productStore)
 
   useEffect(() => {
-    const storedTestimonials = JSON.parse(localStorage.getItem('testimonials'));
-    if (storedTestimonials) {
-      setTestimonials(storedTestimonials);
-    }
-  }, []);
-
+    dispatch(fetchTestimonial())
+    console.log(Testimonial)
+  }, [dispatch]);
   const handlePost = (e) => {
     e.preventDefault();
-    const newTestimonial = { name, rating, message };
-    const updatedTestimonials = [...testimonials, newTestimonial];
-    setTestimonials(updatedTestimonials);
-    localStorage.setItem('testimonials', JSON.stringify(updatedTestimonials));
-    setName('');
-    setRating('');
-    setMessage('');
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('rating', rating);
+    formData.append('description', message);      
+    axios.post(`https://pro-backend-three-alpha.vercel.app/testimonial`, formData)
+      .then(response => {
+        console.log(response);
+        toast.success(response.data.message);
+        setName('');
+        setRating('');
+        setMessage('');
+        // Dispatch fetchTestimonial here after successful submission
+        dispatch(fetchTestimonial());
+      })
+      .catch(error => {
+        console.log(error.message);
+        if (error.message === 'Request failed with status code 409') {
+          toast.error("Email OR Username already registered ");
+        }
+      });
   };
+  
 
   const SubmitTestimonilas = () => {
     setTestmonialform(!testmonialform);
+
   };
 
   return (
@@ -38,17 +54,17 @@ const Testimonials = () => {
       Our Satisfied Customers
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mx-2 md:mx-10 my-4">
         <div className="col-span-2 my-4">
-          {testimonials.map((testimonial, index) => (
+          {Testimonial && Testimonial.slice(0,8).map((ele, index) => (
             <div className="border p-2 mt-4" key={index}>
-              <p className="font-semibold py-2 capitalize text-start text-sm ">Review By {testimonial.name}</p>
+              <p className="font-semibold py-2 capitalize text-start text-sm ">Review By {ele.name}</p>
               <div className="flex text-[#FACC15] text-sm ">
-                {[...Array(Number(testimonial.rating))].map((_, i) => (
+                {[...Array(Number(ele.rating))].map((_, i) => (
                   <FaStar key={i} />
                 ))}
-                {Number(testimonial.rating) < 5 && <FaStarHalfAlt />}
+                {Number(ele.rating) < 5 && <FaStarHalfAlt />}
               </div>
               <div className="mt-2 italic text-start text-sm ">
-                <p className="text-[#57534E]  ">{testimonial.message}</p>
+                <p className="text-[#57534E]  ">{ele.description}</p>
               </div>
             </div>
           ))}
@@ -76,9 +92,9 @@ const Testimonials = () => {
                   <div className="mb-3 flex flex-col">
                     <label className='text-sm font-semibold text-start  '>Rating</label>
                     <select
-                    className='text-sm font-normal p-2  text-start  '
+                      className='text-sm font-normal p-2  text-start  '
                       name="rating"
-                      id="rating"                      
+                      id="rating"
                       value={rating}
                       onChange={(e) => setRating(e.target.value)}
                       required
@@ -94,7 +110,7 @@ const Testimonials = () => {
                   <div className="mb-3 flex flex-col text-md ">
                     <label htmlFor="message" className='text-sm font-semibold text-start  ' >Your Message</label>
                     <textarea
-                    className='text-sm font-normal p-2  text-start  '
+                      className='text-sm font-normal p-2  text-start  '
                       id="message"
                       cols="30"
                       rows="5"
