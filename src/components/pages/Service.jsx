@@ -1,4 +1,7 @@
-import { useState } from "react";
+import { useRef, useState, useEffect } from 'react';
+import emailjs from '@emailjs/browser';
+import { toast } from "react-toastify";
+
 import { ImCross } from "react-icons/im";
 
 import EnquiryFrom from './Enquiry'
@@ -7,28 +10,34 @@ import JackpotPackeges from './JackpotPackages'
 
 
 function Service() {
+  const [loading, setLoading] = useState(false);
+  const form = useRef();
 
   const [isOpen, setIsOpen] = useState(false);
-  const [formData, setFormData] = useState({
-    fullName: '',
-    tourDescription: '',
-    departureDate: '',
-    numberOfDays: '',
-    email: '',
-    mobileNo: '',
-
-  });
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+  
+  const sendEmail = (e) => {
+    e.preventDefault();
+    setLoading(true);
+    emailjs.sendForm('service_0ky6glr', 'template_b7qmekf', form.current, {
+      publicKey: '6Dz5OmCSaJ4po8_yB',
+    })
+      .then(
+        () => {
+          toast.success("Message Sent");
+          setLoading(false);
+          setTimeout(()=>{
+            form.current.reset(); // Clear the form
+          },2000)
+        },
+        () => {
+          toast.error("Message Failed");
+          setLoading(false);
+        },
+      );
   };
 
-  const handleSubmit = () => {
-    console.log(formData);
-    setIsOpen(false)
 
-
-  };
+  
   const handleCloseModal = () => {
     setIsOpen(false)
 
@@ -255,41 +264,29 @@ function Service() {
 
       {isOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="modal bg-white p-5 mt-4  ">
+          <div className="modal bg-white p-5 mt-4 w-75  ">
             <div className="modal-content">
               <div className='flex justify-end '>
                 <span className="close" onClick={handleCloseModal}><ImCross className='cursor-pointer ' /></span>
               </div>
               <h2 className='text-center my-5 font-bold uppercase text-xl'>Enquiry Form</h2>
-              <form onSubmit={handleSubmit}>
-                <div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
-                  <div className='mb-3 flex flex-col '>
-                    <label htmlFor="">Full Name</label>
-                    <input type="text" name="fullName" placeholder="Your Full Name" value={formData.fullName} onChange={handleChange} required />
+              <form ref={form} onSubmit={sendEmail} className='flex flex-col'>
+                  <div className="flex flex-col">
+                    <label htmlFor="from_name" className="text-sm font-medium mb-2">Name</label>
+                    <input type="text" id="from_name" name="from_name" className="border rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-indigo-500" />
                   </div>
-                  <div className='mb-3 flex flex-col '>
-                    <label htmlFor="">Discription</label>
-                    <input type="text" name="tourDescription" placeholder="Tour Description" value={formData.tourDescription} onChange={handleChange} required />
+                  <div className="flex flex-col">
+                    <label htmlFor="to_name" className="text-sm font-medium mb-2">Mobile</label>
+                    <input type="number" id="to_name" name="to_name" className="border rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-indigo-500" />
                   </div>
-                  <div className='mb-3 flex flex-col '>
-                    <label htmlFor="">Departure Date</label>
-                    <input type="text" name="departureDate" placeholder="Departure Date" value={formData.departureDate} onChange={handleChange} required />
+                  <div className="flex flex-col">
+                    <label htmlFor="message" className="text-sm font-medium mb-2">Message</label>
+                    <textarea id="message" name="message" className="border rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-indigo-500 h-24"></textarea>
                   </div>
-                  <div className='mb-3 flex flex-col '>
-                    <label htmlFor="">Bookin In Days</label>
-                    <input type="number" name="numberOfDays" placeholder="Number of Days" value={formData.numberOfDays} onChange={handleChange} required />
-                  </div>
-                  <div className='mb-3 flex flex-col '>
-                    <label htmlFor="">Your Email</label>
-                    <input type="email" name="email" placeholder="Email id" value={formData.email} onChange={handleChange} required />
-                  </div>
-                  <div className='mb-3 flex flex-col '>
-                    <label htmlFor="Mobile">Mobile</label>
-                    <input type="tel" name="mobileNo" placeholder="Mobile No." value={formData.mobileNo} onChange={handleChange} required />
-                  </div>
-                </div>
-                <button className='mt-5 bg-[#172554] text-white px-5 py-2 text-sm w-full ' type="submit">Submit</button>
-              </form>
+                  <button type="submit" value='send' className="bg-indigo-500 text-white mt-2 px-4 py-2 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    {loading ? "Sending ..." : 'Send'}
+                  </button>
+                </form>
             </div>
           </div>
         </div >

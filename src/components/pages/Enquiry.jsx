@@ -1,60 +1,65 @@
-import { useEffect, useState } from "react"
+import { useRef, useState, useEffect } from 'react';
+import emailjs from '@emailjs/browser';
+import { toast } from "react-toastify";
 
-
-function Enquiry() {
-  const [fname, setFname] = useState('')
-  const [email, setEmail] = useState('')
-  const [mobile, setMobile] = useState(null)
-  const [msg, setMsg] = useState('')
+function Contactus() {
+  const [loading, setLoading] = useState(false);
+  const form = useRef();
 
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
-  const handleFormSubmit = (e) => {
-    e.preventDefault()
-    console.log(fname, email, mobile, msg);
-    alert("Our Team Reach out ASAP")
-  }
+    window.scrollTo(0, 0);
+  }, []);
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    setLoading(true);
+    emailjs.sendForm('service_0ky6glr', 'template_b7qmekf', form.current, {
+      publicKey: '6Dz5OmCSaJ4po8_yB',
+    })
+      .then(
+        () => {
+          toast.success("Message Sent");
+          setLoading(false);
+          setTimeout(()=>{
+            form.current.reset(); // Clear the form
+          },2000)
+        },
+        () => {
+          toast.error("Message Failed");
+          setLoading(false);
+        },
+      );
+  };
 
   return (
     <>
-      <div className="max-w-md mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-        <h2 className="text-center text-2xl font-bold mb-4">Enquiry Form</h2>
-        <form>
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" >
-              Full Name
-            </label>
-            <input onChange={(e) => setFname(e.target.value)} value={fname} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fullName" type="text" placeholder="Your Full Name" />
-          </div>
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" >
-              Email
-            </label>
-            <input onChange={(e) => setEmail(e.target.value)} value={email} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Email Address" />
-          </div>
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" >
-              Mobile
-            </label>
-            <input onChange={(e) => setMobile(e.target.value)} value={mobile} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="mobile" type="tel" placeholder="Mobile Number" />
-          </div>
-          <div className="mb-6">
-            <label className="block text-gray-700 text-sm font-bold mb-2">
-              Message
-            </label>
-            <textarea onChange={(e) => setMsg(e.target.value)} value={msg} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="message" placeholder="Your Message"></textarea>
-          </div>
-          <div className="flex items-center justify-center">
-            <button onClick={handleFormSubmit} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
-              Submit
-            </button>
-          </div>
-        </form>
-      </div>
-
+      <section className="bg-blue-50 dark:bg-[#FBCFE8] my-2 md:my-6 mx-2 md:mx-14" id="contact">               
+         <p className="text-center font-bold uppercase py-2 ">Raise Enquary</p>
+            <div className="grid p-5 ">             
+              <div className="card h-fit w-full " id="form">               
+                <form ref={form} onSubmit={sendEmail} className='flex flex-col'>
+                  <div className="flex flex-col">
+                    <label htmlFor="from_name" className="text-sm font-medium mb-2">Name</label>
+                    <input type="text" id="from_name" name="from_name" className="border rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-indigo-500" />
+                  </div>
+                  <div className="flex flex-col">
+                    <label htmlFor="to_name" className="text-sm font-medium mb-2">Mobile</label>
+                    <input type="number" id="to_name" name="to_name" className="border rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-indigo-500" />
+                  </div>
+                  <div className="flex flex-col">
+                    <label htmlFor="message" className="text-sm font-medium mb-2">Message</label>
+                    <textarea id="message" name="message" className="border rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-indigo-500 h-24"></textarea>
+                  </div>
+                  <button type="submit" value='send' className="bg-indigo-500 text-white mt-2 px-4 py-2 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    {loading ? "Sending ..." : 'Send'}
+                  </button>
+                </form>
+              </div>
+            </div>        
+       
+      </section>
     </>
-  )
+  );
 }
 
-export default Enquiry
+export default Contactus;
