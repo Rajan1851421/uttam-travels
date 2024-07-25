@@ -38,7 +38,11 @@ function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link to='/' className='flex justify-start'>  <img className='h-[70px] w-[70px] rounded-full' src="https://images.unsplash.com/photo-1715346848307-84385a7f3a86?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MXx8fGVufDB8fHx8fA%3D%3D" alt="" /> </Link>
-          <span className="text-bold text-yellow-500 " >{Token_login && UserName ? UserName : null }</span>
+          {Token_login && UserName ? (
+                <span className="font-bold text-white rounded-full p-2 h-12 w-12 flex justify-center items-center bg-[#22C55E]">
+                    {UserName[0]}
+                </span>
+            ) : null}
           {/* Mobile menu button */}
           <div className="flex md:hidden">
             <button onClick={toggleMenu} className="text-white p-2 focus:outline-none">
