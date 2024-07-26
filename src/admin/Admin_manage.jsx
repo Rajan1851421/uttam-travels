@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Login from "../components/login/Login";
 import { deleteUser, getAllUser } from "../features/producrSlice";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import TestimonialData_manage from "./TestimonialData_manage";
 
@@ -66,6 +67,13 @@ function AdminManage() {
                             >
                                 View All Testimonial
                             </button>
+                            <Link to="/change_password"
+                                
+                                className="w-full mt-2 md:mt-0 md:w-auto px-6 py-2 md:px-4 md:py-2 text-center text-white bg-violet-600 border border-violet-600 rounded active:text-violet-500 hover:bg-transparent hover:text-violet-600 focus:outline-none focus:ring"
+                            >
+                                Change Password
+                            </Link>
+                            
                         </div>
 
                         {usertable && <div className="w-full mx-auto mt-2">

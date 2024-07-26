@@ -9,6 +9,7 @@ import Testimonials from "./pages/Testimonials"
 import SignupForm from "./login/SignupFrom"
 import ViewVehicle from "./pages/ViewVehicle"
 import Manage from "../admin/Admin_manage"
+import ChangePassword from "./login/ChangePassword"
 
 
 
@@ -27,6 +28,7 @@ function Router() {
         <Route path='/signup' element={<SignupForm/>} />
         <Route path='/view' element={<ViewVehicle/>}/>
         <Route path = '/manage_admin' element={<Manage/>}/>
+        <Route path = '/change_password' element = {<ChangePassword/>}/>
     </Routes>
       
     </>
