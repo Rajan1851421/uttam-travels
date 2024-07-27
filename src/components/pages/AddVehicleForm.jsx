@@ -23,7 +23,7 @@ function AddVehicleForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("A")
+    console.log("A");
     try {
       setUploading(true); // Start uploading
       const formData = new FormData();
@@ -31,27 +31,27 @@ function AddVehicleForm() {
       formData.append('carName', carName); 
       formData.append('carType', carType); 
       formData.append('rate', rate);
-      
 
-      const response = await axios.post('http://localhost:3000/vehicle/', formData, {
+      const response = await axios.post('http://localhost:3000/vehicle', formData, {
         headers: {
           'Content-Type': 'multipart/form-data', 
         },
       });
-      
-        toast.success("Vehicle Added Successfully ") // Hide status message after 3 seconds
-      
+
+      toast.success("Vehicle Added Successfully "); // Show success message
       console.log('Response:', response.data);     
       setUploaded(true); // Set uploaded
+
       setTimeout(() => {
         setUploaded(false); // Reset uploaded status after 3 seconds
-        setCarImg(''); // Clear form data
+        setCarImg(null); // Clear form data
         setCarName('');
         setCarType('');
         setRate('');
       }, 1000);
     } catch (error) {
       console.error('Error:', error);
+      toast.error('Failed to add vehicle. Please try again.'); // Show error message
     } finally {
       setUploading(false); // Finish uploading
     }

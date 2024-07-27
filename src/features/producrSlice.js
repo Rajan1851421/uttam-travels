@@ -148,6 +148,7 @@ export const productDetails = createSlice({
   reducers: {
     clearTokenLogin: (state) => {
       state.Token_login = null;
+      state.UserName = null;
     },
   },
   extraReducers: (builder) => {

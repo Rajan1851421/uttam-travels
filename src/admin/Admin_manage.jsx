@@ -14,6 +14,7 @@ function AdminManage() {
     const [feedbackTable, setFeddbackTable] = useState(false)
 
     useEffect(() => {
+        window.scrollTo(0,0)
         dispatch(getAllUser());
         setUserTable(true)
         setFeddbackTable(false)
