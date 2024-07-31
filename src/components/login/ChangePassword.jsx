@@ -19,6 +19,9 @@ const ChangePassword = () => {
     };
     const handleSubmit = (e) => {
         e.preventDefault();
+        // console.log("clicked")
+        // console.log(UserName)
+        setUserName(UserName)
         const validationErrors = validate();
         if (Object.keys(validationErrors).length > 0) {
             setErrors(validationErrors);
@@ -27,7 +30,7 @@ const ChangePassword = () => {
 
         axios.post('https://pro-backend-three-alpha.vercel.app/user/update_password', { username, password })
             .then(response => {
-                console.log(response);
+                // console.log(response);
                 toast.success(response.data.message);
                 setUserName("");
                 setPassword("");

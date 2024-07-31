@@ -10,27 +10,28 @@ function Contactus() {
     window.scrollTo(0, 0);
   }, []);
 
-  const sendEmail = (e) => {
+  const sendEmail = async (e) => {
     e.preventDefault();
     setLoading(true);
-    emailjs.sendForm('service_0ky6glr', 'template_b7qmekf', form.current, {
-      publicKey: '6Dz5OmCSaJ4po8_yB',
-    })
-      .then(
-        () => {
-          toast.success("Message Sent");
-          setLoading(false);
-          setTimeout(()=>{
-            form.current.reset(); // Clear the form
-          },2000)
-        },
-        () => {
-          toast.error("Message Failed");
-          setLoading(false);
-        },
-      );
+  
+    try {
+      const response = await emailjs.sendForm('service_0ky6glr', 'template_b7qmekf', form.current, {
+        publicKey: '6Dz5OmCSaJ4po8_yB',
+      });
+      console.log('EmailJS response:', response);
+      toast.success("Message Sent");
+      setLoading(false);
+      setTimeout(() => {
+        form.current.reset(); // Clear the form
+      }, 2000);
+    } catch (error) {
+      console.error('EmailJS error:', error);
+      toast.error("Message Failed");
+      setLoading(false);
+    }
   };
-
+  
+  
   return (
     <>
       <section className="bg-blue-50 dark:bg-[#FBCFE8] my-2 md:my-6 mx-2 md:mx-14" id="contact">
