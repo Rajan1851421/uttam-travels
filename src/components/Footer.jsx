@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom"
 import { FaLocationDot } from "react-icons/fa6";
 import { TiExportOutline } from "react-icons/ti";
-import { MdLabelImportant } from "react-icons/md";
-import { MdImportantDevices } from "react-icons/md";
+import { MdAutoAwesome } from "react-icons/md";
+import { MdNotificationImportant } from "react-icons/md";
+import { MdConnectWithoutContact } from "react-icons/md";
 import { FaArrowUp } from "react-icons/fa6";
 import { FaWhatsapp } from "react-icons/fa6";
 import { useSelector } from 'react-redux'
@@ -28,7 +29,7 @@ function Footer() {
     return (
         <>
             <footer>
-                <div className="bg-[#64748B] pt-4 text-white">
+                <div className="bg-[#052E16] pt-4 text-white">
                     {/* whatsap chat add */}
 
                     <a href="https://wa.me/7052002200" target="_blank" rel="noopener noreferrer" className="border p-3 fixed bottom-8 left-5 bg-[#22C55E] rounded-full text-[#172554] cursor-pointer hover:rounded-4xl hover:px-10">
@@ -40,7 +41,7 @@ function Footer() {
                         <div className="-mx-4 flex flex-wrap justify-between">
                             <div className="px-4 my-4 w-full xl:w-1/5">
                                 <div>
-                                    <h2 className="flex justify-start items-center text-2xl pb-4 mb-4 border-b-4 border-blue-600"> <MdLabelImportant className="text-red-700" />UT Travels</h2>
+                                    <h2 className="flex justify-center items-center text-xl pb-4 mb-4 border-b-4 border-blue-600"> <MdAutoAwesome className="text-red-700 mx-1" />UT Travels</h2>
                                 </div>
 
                                 <p className="text-justify ">
@@ -50,8 +51,8 @@ function Footer() {
 
                             <div className="px-4 my-4 w-full sm:w-auto">
                                 <div>
-                                    <h2 className="flex justify-start items-center text-2xl pb-4 mb-4 border-b-4 border-blue-600">
-                                        <MdImportantDevices className="text-red-700 mx-1 " />Important</h2>
+                                    <h2 className="flex justify-center items-center text-xl pb-4 mb-4 border-b-4 border-blue-600">
+                                        <MdNotificationImportant className="text-red-700 mx-1 " />Important</h2>
                                 </div>
                                 <ul className="leading-8">
                                     <li><Link to="/login" className="hover:text-blue-400">Login</Link></li>
@@ -65,19 +66,19 @@ function Footer() {
                             </div>
                             <div className="px-4 my-4 w-full sm:w-auto">
                                 <div>
-                                    <h2 className="pb-4 text-2xl  mb-4 border-b-4 flex justify-start items-center border-blue-600"> <FaLocationDot className="text-yellow-700" /> Address</h2>
+                                    <h2 className="pb-4 text-xl  mb-4 border-b-4 flex justify-center items-center border-blue-600"> <FaLocationDot className="text-yellow-700  mx-1" /> Address</h2>
                                 </div>
                                 <ul className="leading-8">
-                                    <li><a href="#" className="hover:text-blue-400">Getting Started With HTML and CSS</a></li>
-                                    <li><a href="#" className="hover:text-blue-400">What Is Flex And When to Use It?</a></li>
-                                    <li><a href="#" className="hover:text-blue-400">How TailwindCSS Can Help Your Productivity?</a></li>
-                                    <li><a href="#" className="hover:text-blue-400">5 Tips to Make Responsive Website</a></li>
-                                    <li><a href="#" className="hover:text-blue-400">See More</a></li>
+                                    <li><a href="#" className="hover:text-blue-400">Holapur Shivpur Varanasi</a></li>
+                                    <li><a href="#" className="hover:text-blue-400">221003</a></li>
+                                    <li><a href="#" className="hover:text-blue-400">Uttar Pradesh</a></li>
+                                    <li><a href="#" className="hover:text-blue-400">India</a></li>
+                                    
                                 </ul>
                             </div>
                             <div className="px-4 my-4 w-full sm:w-auto xl:w-1/5">
                                 <div>
-                                    <h2 className="flex justify-start items-center text-2xl pb-4 mb-4 border-b-4 border-blue-600"> <TiExportOutline className="text-[#84CC16]" />Connect With Us</h2>
+                                    <h2 className="flex justify-center items-center text-xl pb-4 mb-4 border-b-4 border-blue-600"> <MdConnectWithoutContact className="text-[#84CC16]" />Connect With Us</h2>
                                 </div>
                                 <a href="#" className="inline-flex items-center justify-center h-8 w-8 border border-gray-100 rounded-full mr-1 hover:text-blue-400 hover:border-blue-400">
                                     <svg className="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
@@ -113,17 +114,9 @@ function Footer() {
 
 
                 </div>
-                <div className="bg-indigo-700 py-4 text-gray-100">
-                    <div className="container mx-auto px-4">
-                        <div className="-mx-4 flex flex-wrap justify-between">
-                            <div className="px-4 w-full text-center sm:w-auto sm:text-left">
-                                Copyright © 2020 All Rights Reserved.
-                            </div>
-
-                            <div className="px-4 w-full text-center sm:w-auto sm:text-left">
-                                Made with : Rajan Prajapati
-                            </div>
-                        </div>
+                <div className="bg-[#064E3B] py-2  text-gray-100">
+                    <div className="px-4 w-full text-sm text-center sm:w-auto sm:text-left">
+                        Copyright © 2020 All Rights Reserved.
                     </div>
                 </div>
             </footer>
