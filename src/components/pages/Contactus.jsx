@@ -15,8 +15,8 @@ function Contactus() {
     setLoading(true);
   
     try {
-      const response = await emailjs.sendForm('service_0ky6glr', 'template_b7qmekf', form.current, {
-        publicKey: '6Dz5OmCSaJ4po8_yB',
+      const response = await emailjs.sendForm('service_8k1jvrl', 'template_aopsngq', form.current, {
+        publicKey: 'GD9NwgOCbBibTYt33',
       });
       console.log('EmailJS response:', response);
       toast.success("Message Sent");
