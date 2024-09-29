@@ -6,31 +6,30 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 function AddVehicleForm() {
-  const [carImg, setCarImg] = useState(null);
+  const [carImg, setCarImg] = useState(""); // URL of the car image
   const [carName, setCarName] = useState("");
   const [carType, setCarType] = useState("");
   const [rate, setRate] = useState("");
-  const [uploading, setUploading] = useState(false); // State to track uploading status
-  const [uploaded, setUploaded] = useState(false); // State to track uploaded status
+  const [uploading, setUploading] = useState(false); // To track uploading status
+  const [uploaded, setUploaded] = useState(false); // To track uploaded status
+  const [data,setData] = useState([])
 
   const { Token_login } = useSelector((state) => state.productStore);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+  }, [data]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("A");
-    try {
-      setUploading(true); // Start uploading
-      const formData = new FormData();
-      formData.append("photo", carImg);
-      formData.append("carName", carName);
-      formData.append("carType", carType);
-      formData.append("rate", rate);
+    setUploading(true); // Set uploading to true
+    const formData = new FormData();
+    formData.append("carName", carName);
+    formData.append("carType", carType);
+    formData.append("image", carImg);
+    formData.append("rate", rate);
 
-      // const response = await axios.post('http://localhost:3000/vehicle', formData, {
+    try {
       const response = await axios.post(
         "https://pro-backend-three-alpha.vercel.app/vehicle",
         formData,
@@ -41,22 +40,22 @@ function AddVehicleForm() {
         }
       );
 
-      toast.success("Vehicle Added Successfully "); // Show success message
       console.log("Response:", response.data);
-      setUploaded(true); // Set uploaded
-
+      setUploaded(true); // Set uploaded to true on successful upload
+      toast.success("Vehicle added successfully!");
+      setData(response)
       setTimeout(() => {
         setUploaded(false); // Reset uploaded status after 3 seconds
         setCarImg(""); // Clear form data
         setCarName("");
         setCarType("");
         setRate("");
-      }, 1000);
+      }, 1000); // Notify success
     } catch (error) {
       console.error("Error:", error);
-      toast.error("Failed to add vehicle. Please try again."); // Show error message
+      toast.error("Failed to add vehicle!"); // Notify failure
     } finally {
-      setUploading(false); // Finish uploading
+      setUploading(false); // Reset uploading status
     }
   };
 
@@ -73,38 +72,20 @@ function AddVehicleForm() {
           onSubmit={handleSubmit}
           className="bg-gradient-to-r from-violet-200 to-pink-200 shadow-lg rounded px-8 p-4 md:p-14 mb-4 mt-2 md:mt-8"
         >
-          {/* <div className="mb-4">
-            <label htmlFor="photo" className="block text-gray-700 text-sm font-bold mb-2">
-              Upload Photo
-            </label>
-            <input
-              required
-              type="file"
-              id="photo"
-              name="photo"
-              onChange={(e) => {
-                const file = e.target.files[0];
-                setCarImg(file);
-              }}
-              className="shadow appearance-none border border-[#1E1B4B] rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            />
-          </div> */}
           <div className="mb-4">
             <label
               htmlFor="photo"
               className="block text-gray-700 text-sm font-bold mb-2"
             >
-              Paste Image URL
+              Paste Image URL or Upload Image
             </label>
             <input
               required
-              type="url" // Use 'url' type for the input
+              type="text" // Use 'url' type for the input
               id="photo"
               name="photo"
-             // pattern="https?://.*\.(?:png|jpg|jpeg|gif|svg|webp)" // Pattern for image URL validation
-              onChange={(e) => { const file = e.target.value;  
-                setCarImg(file)
-                   }}
+              value={carImg}
+              onChange={(e) => setCarImg(e.target.value)}
               className="shadow appearance-none border border-[#1E1B4B] rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             />
           </div>
@@ -127,6 +108,7 @@ function AddVehicleForm() {
               required
             />
           </div>
+
           <div className="mb-4">
             <label
               htmlFor="carType"
@@ -149,6 +131,7 @@ function AddVehicleForm() {
               <option value="coupe">Coupe</option>
             </select>
           </div>
+
           <div className="mb-4">
             <label
               htmlFor="rate"
