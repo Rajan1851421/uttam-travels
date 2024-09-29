@@ -1,24 +1,22 @@
-import { useState, useEffect } from 'react';
-import { FaCar } from 'react-icons/fa';
-import { useSelector } from 'react-redux';
-import Login from '../login/Login';
-import axios from 'axios';
+import { useState, useEffect } from "react";
+import { FaCar } from "react-icons/fa";
+import { useSelector } from "react-redux";
+import Login from "../login/Login";
+import axios from "axios";
 import { toast } from "react-toastify";
-
 
 function AddVehicleForm() {
   const [carImg, setCarImg] = useState(null);
-  const [carName, setCarName] = useState('');
-  const [carType, setCarType] = useState('');  
-  const [rate, setRate] = useState('');
+  const [carName, setCarName] = useState("");
+  const [carType, setCarType] = useState("");
+  const [rate, setRate] = useState("");
   const [uploading, setUploading] = useState(false); // State to track uploading status
   const [uploaded, setUploaded] = useState(false); // State to track uploaded status
-  
+
   const { Token_login } = useSelector((state) => state.productStore);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-
   }, []);
 
   const handleSubmit = async (e) => {
@@ -27,43 +25,47 @@ function AddVehicleForm() {
     try {
       setUploading(true); // Start uploading
       const formData = new FormData();
-      formData.append('photo', carImg); 
-      formData.append('carName', carName); 
-      formData.append('carType', carType); 
-      formData.append('rate', rate);
+      formData.append("photo", carImg);
+      formData.append("carName", carName);
+      formData.append("carType", carType);
+      formData.append("rate", rate);
 
-      const response = await axios.post('http://localhost:3000/vehicle', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data', 
-        },
-      });
+      // const response = await axios.post('http://localhost:3000/vehicle', formData, {
+      const response = await axios.post(
+        "https://pro-backend-three-alpha.vercel.app/vehicle",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
 
       toast.success("Vehicle Added Successfully "); // Show success message
-      console.log('Response:', response.data);     
+      console.log("Response:", response.data);
       setUploaded(true); // Set uploaded
 
       setTimeout(() => {
         setUploaded(false); // Reset uploaded status after 3 seconds
-        setCarImg(null); // Clear form data
-        setCarName('');
-        setCarType('');
-        setRate('');
+        setCarImg(""); // Clear form data
+        setCarName("");
+        setCarType("");
+        setRate("");
       }, 1000);
     } catch (error) {
-      console.error('Error:', error);
-      toast.error('Failed to add vehicle. Please try again.'); // Show error message
+      console.error("Error:", error);
+      toast.error("Failed to add vehicle. Please try again."); // Show error message
     } finally {
       setUploading(false); // Finish uploading
     }
   };
 
-  
-
   return (
     <div className="mx-2 md:mx-[150px] my-2 md:my-4">
-      
       <div className="flex flex-col justify-center items-center">
-        <h1 className="text-md md:text-2xl font-extrabold text-center">ADD NEW VEHICLE</h1>
+        <h1 className="text-md md:text-2xl font-extrabold text-center">
+          ADD NEW VEHICLE
+        </h1>
         <FaCar className="text-lg md:text-6xl text-[#4C0519] border rounded-full h-10 w-10 p-1" />
       </div>
       {Token_login ? (
@@ -71,7 +73,7 @@ function AddVehicleForm() {
           onSubmit={handleSubmit}
           className="bg-gradient-to-r from-violet-200 to-pink-200 shadow-lg rounded px-8 p-4 md:p-14 mb-4 mt-2 md:mt-8"
         >
-          <div className="mb-4">
+          {/* <div className="mb-4">
             <label htmlFor="photo" className="block text-gray-700 text-sm font-bold mb-2">
               Upload Photo
             </label>
@@ -86,9 +88,32 @@ function AddVehicleForm() {
               }}
               className="shadow appearance-none border border-[#1E1B4B] rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             />
-          </div>
+          </div> */}
           <div className="mb-4">
-            <label htmlFor="name" className="block text-gray-700 text-sm font-bold mb-2">
+            <label
+              htmlFor="photo"
+              className="block text-gray-700 text-sm font-bold mb-2"
+            >
+              Paste Image URL
+            </label>
+            <input
+              required
+              type="url" // Use 'url' type for the input
+              id="photo"
+              name="photo"
+             // pattern="https?://.*\.(?:png|jpg|jpeg|gif|svg|webp)" // Pattern for image URL validation
+              onChange={(e) => { const file = e.target.value;  
+                setCarImg(file)
+                   }}
+              className="shadow appearance-none border border-[#1E1B4B] rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+          </div>
+
+          <div className="mb-4">
+            <label
+              htmlFor="name"
+              className="block text-gray-700 text-sm font-bold mb-2"
+            >
               Car Name
             </label>
             <input
@@ -103,7 +128,10 @@ function AddVehicleForm() {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="carType" className="block text-gray-700 text-sm font-bold mb-2">
+            <label
+              htmlFor="carType"
+              className="block text-gray-700 text-sm font-bold mb-2"
+            >
               Car Type
             </label>
             <select
@@ -122,7 +150,10 @@ function AddVehicleForm() {
             </select>
           </div>
           <div className="mb-4">
-            <label htmlFor="rate" className="block text-gray-700 text-sm font-bold mb-2">
+            <label
+              htmlFor="rate"
+              className="block text-gray-700 text-sm font-bold mb-2"
+            >
               Rate
             </label>
             <input
@@ -141,11 +172,15 @@ function AddVehicleForm() {
             <button
               type="submit"
               className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ${
-                uploading ? 'opacity-50 cursor-not-allowed' : ''
+                uploading ? "opacity-50 cursor-not-allowed" : ""
               }`}
               disabled={uploading}
             >
-              {uploading ? 'Uploading...' : uploaded ? 'Uploaded' : 'Add Vehicle'}
+              {uploading
+                ? "Uploading..."
+                : uploaded
+                ? "Uploaded"
+                : "Add Vehicle"}
             </button>
           </div>
         </form>
